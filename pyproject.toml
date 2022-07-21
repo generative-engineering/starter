@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "microtechnology-skeleton"
+version = "0.1.0"
+description = "Template for Generative Microtechnologies"
+authors = ["Generative Engineering <degenerates@generative.vision>"]
+packages = [
+    { include = "cube", from = "src" },
+]
+
+[[tool.poetry.source]]
+name = "gitlab"
+url = "https://gitlab.com/api/v4/groups/14110432/-/packages/pypi/simple"
+secondary = true
+
+[tool.poetry.dependencies]
+python = "^3.8,<3.11"
+generative-engine = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

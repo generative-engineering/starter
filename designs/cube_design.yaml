@@ -1,0 +1,53 @@
+# Set termination criteria for an exploration here (usually number of evaluations using n_eval)
+_engine:
+  algorithm_params:
+    termination:
+      n_eval: 10  # This example generates 10 cubes
+
+# Tells the engine to only use the functions specified here,
+# but to fill in connections and default values.
+_exact:
+  models: True
+
+# Set any global variables you want to re-use here
+global:
+  overall_width:
+    - variable:
+        low: 1.0
+        high: 2.5
+
+# Define the exploration parameters and connections for your functions here
+CubeGenerator:
+  inputs:
+    specified_width:
+    - from: overall_width
+
+RectangularPrismGenerator:
+  inputs:
+    specified_width:
+    - from: overall_width
+    specified_length:
+    - variable:
+        low: 0.5
+        high: 3.5
+
+VolumeAnalysis:
+  inputs:
+    name:
+    - constant: VolumeAnalysis
+    cuboid:
+    - from: RectangularPrismGenerator
+    - from: CubeGenerator
+
+  outputs:
+    volume:
+      - objective: maximize
+    surface_area:
+      - objective: minimize
+
+CuboidRenderer:
+  inputs:
+    file_name:
+    - constant: cuboid_render
+    cuboid:
+    - from: VolumeAnalysis-cuboid
