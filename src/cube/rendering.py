@@ -1,7 +1,7 @@
 import datetime
 import os
-from typing import Text
 from pathlib import Path
+from typing import Text
 
 from generative.engine.fabric.function import FabricFunction
 from generative.engine.fabric.type import FabricType, Field
@@ -30,7 +30,7 @@ class CuboidRenderer(FabricFunction):
         with open(image_file, 'w') as f:
             f.write("Replace me with an image!")
 
-        return CuboidRender(image_file=image_file)
+        return CuboidRender(image_file=str(image_file))
 
 
 ###################################################################################################

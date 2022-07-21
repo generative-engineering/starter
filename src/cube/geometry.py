@@ -1,7 +1,7 @@
+from typing import Text
+
 from generative.engine.fabric.function import FabricFunction
 from generative.engine.fabric.type import FabricType
-
-from typing import Text
 
 from cube.analysis import Cuboid
 

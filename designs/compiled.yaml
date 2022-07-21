@@ -1,0 +1,51 @@
+CubeGenerator:
+  include: 'yes'
+  inputs:
+    specified_width:
+    - from: overall_width
+CuboidRenderer:
+  include: 'yes'
+  inputs:
+    cuboid:
+    - from: VolumeAnalysis-cuboid
+    output_directory_name:
+    - constant: output
+    render_directory_name:
+    - constant: renders
+    render_name:
+    - constant: cuboid_render
+RectangularPrismGenerator:
+  include: 'yes'
+  inputs:
+    specified_length:
+    - variable:
+        high: 3.5
+        low: 0.5
+    specified_width:
+    - from: overall_width
+VolumeAnalysis:
+  include: 'yes'
+  inputs:
+    cuboid:
+    - from: CubeGenerator
+    name:
+    - constant: VolumeAnalysis
+  outputs:
+    surface_area:
+    - objective: minimize
+    volume:
+    - objective: maximize
+_engine:
+  algorithm_params:
+    pop_size: 50
+    progress_file: ''
+    seed: 1
+    termination:
+      n_eval: 10
+  generation_type: nsga-ii
+_exact: true
+global:
+  overall_width:
+  - variable:
+      high: 2.5
+      low: 1.0

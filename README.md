@@ -53,7 +53,7 @@ Running First Exploration
 
 Once you have set up (as above), try the following to "compile" the design file:
 ```shell
-poetry run engine compile --fabric src designs/cube_design.yaml
+poetry run engine compile --fabric src designs/cube_design.yaml --compiled-file designs/cube_design.compiled.yaml
 ```
 If this succeeds (it won't print anything, but no errors should be raised),
 you can inspect the "completed" design file at `designs/cube_design.compiled.yaml`.
@@ -61,23 +61,11 @@ If not, you may not have followed the setup instructions properly.
 
 If this works, you can run an exploration with the following:
 ```shell
-poetry run engine run --fabric src designs/cube_design.yaml --output output/results.json
+poetry run engine run --fabric src designs/cube_design.yaml --output-file output/results.json
 ```
-which will save the overall exploration results in `ouptut/results.json` for viewing.
+which will save the overall exploration results in `ouptut/results.json`.
+At the moment, custom visualisations for interpreting these results have to be built.
 
-Then, you can run the interactive dashboard for inspecting the results with the following:
-```shell
-poetry run python src/dashboard/app.py
-```
-:information_source: You'll need `pandas` for this: `poetry install -E pandas`
-
-Then click on the hyperlink printed at the terminal (probably http://127.0.0.1:8050/).
-
-What's Next?
-------------
-
-Start hacking! Replace the simple cube models with something wild.
-
-Update the (very rough) visualisations in the dashboard app, how might you view 1000 of the thing you're generating
-
-Create a rendering function to view individual instances of generated designs.
+You can however see many files generated and put in the `output/renders` directory.
+If you update the `CuboidRenderer` function to generate images of your microtechnology,
+you will see them here.

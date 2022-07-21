@@ -7,7 +7,7 @@ _engine:
 # Tells the engine to only use the functions specified here,
 # but to fill in connections and default values.
 _exact:
-  models: True
+  functions: True
 
 # Set any global variables you want to re-use here
 global:
@@ -36,8 +36,12 @@ VolumeAnalysis:
     name:
     - constant: VolumeAnalysis
     cuboid:
-    - from: RectangularPrismGenerator
-    - from: CubeGenerator
+      height:
+        - from: CubeGenerator-height
+      width:
+        - from: CubeGenerator-width
+      length:
+        - from: CubeGenerator-length
 
   outputs:
     volume:
@@ -47,7 +51,12 @@ VolumeAnalysis:
 
 CuboidRenderer:
   inputs:
-    file_name:
+    render_name:
     - constant: cuboid_render
     cuboid:
-    - from: VolumeAnalysis-cuboid
+      height:
+        - from: VolumeAnalysis-cuboid-height
+      width:
+        - from: VolumeAnalysis-cuboid-width
+      length:
+        - from: VolumeAnalysis-cuboid-length
