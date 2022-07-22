@@ -1,5 +1,3 @@
-
-
 def test_prism_parametrisation():
     # todo
     pass
