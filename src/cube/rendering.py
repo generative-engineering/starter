@@ -23,11 +23,10 @@ class CubeRenderInputs(FabricType):
 
 
 class CuboidRenderer(FabricFunction):
-
     def run(self, inputs: CubeRenderInputs) -> CuboidRender:
 
         image_file = _resolve_render_path(inputs.render_name, "txt")
-        with open(image_file, 'w') as f:
+        with open(image_file, "w") as f:
             f.write("Replace me with an image!")
 
         return CuboidRender(image_file=str(image_file))
@@ -37,10 +36,12 @@ class CuboidRenderer(FabricFunction):
 # Some re-usable python functions to help manage storing data on your local filesystem.
 ###################################################################################################
 
+
 def _resolve_render_path(
-    name: Text, extension: Text,
+    name: Text,
+    extension: Text,
     output_directory: Text = "output",
-    render_directory: Text = "renders"
+    render_directory: Text = "renders",
 ) -> Path:
 
     if not os.path.isdir(output_directory):
@@ -72,4 +73,3 @@ def timestamp(a_string: Text) -> Text:
         .replace(":", "")
         .replace("-", "")[0:-2]
     )
-

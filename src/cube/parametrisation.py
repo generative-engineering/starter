@@ -1,4 +1,3 @@
-
 from generative.engine.fabric.function import FabricFunction
 from generative.engine.fabric.type import FabricType, Field
 
@@ -13,8 +12,8 @@ class PrismDimensions(FabricType):
     specified_width: float = Field(gt=0)
     specified_length: float = Field(gt=0)
 
-class CubeGenerator(FabricFunction):
 
+class CubeGenerator(FabricFunction):
     def run(self, inputs: CubeDimensions) -> Cuboid:
         return Cuboid(
             width=inputs.specified_width,
@@ -28,7 +27,6 @@ class RectangleOutputs(FabricType):
 
 
 class RectangularPrismGenerator(FabricFunction):
-
     def run(self, inputs: PrismDimensions) -> Cuboid:
         return Cuboid(
             width=inputs.specified_width,

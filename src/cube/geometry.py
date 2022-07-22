@@ -11,7 +11,6 @@ class GeometryOutput(FabricType):
 
 
 class CubeCADGenerator(FabricFunction):
-
     def run(self, inputs: Cuboid) -> GeometryOutput:
 
         # TODO: Add example use of generative python geometry wrappers

@@ -1,0 +1,37 @@
+default:
+  image: python:3.8-slim-buster
+
+stages:
+  - lint
+  - test
+
+variables:
+  POETRY_VERSION: 1.1.13
+  DESIGN_SPEC: designs/cube.yaml
+
+before_script:
+  - pip install -qq "poetry==$POETRY_VERSION"
+  # Beware the tokens: https://github.com/python-poetry/poetry/issues/2889
+  - poetry config -- http-basic.gitlab gitlab-ci-token "$CI_JOB_TOKEN"
+  - poetry install
+
+lint-python:
+  stage: lint
+  needs: [ ]
+  script:
+    # Run all the linting in a sensible order
+    - poetry run isort --check src tests
+    - poetry run black --check src tests
+    - poetry run flake8 src tests
+
+test-python:
+  stage: test
+  needs: [ ]
+  script:
+    - poetry run pytest tests
+
+test-design-file:
+  stage: test
+  needs: [ ]
+  script:
+    - poetry run engine compile --fabric "src" --compiled-file "compiled_groundstation.yaml" "$DESIGN_SPEC"

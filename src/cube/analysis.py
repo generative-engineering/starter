@@ -22,14 +22,13 @@ class VolumeInput(FabricType):
 
 
 class VolumeAnalysis(FabricFunction):
-
     def run(self, inputs: VolumeInput) -> GeometryVolume:
         return GeometryVolume(
             cuboid=inputs.cuboid,
             volume=inputs.cuboid.width * inputs.cuboid.height * inputs.cuboid.length,
             surface_area=(
-                (2 *inputs.cuboid.width * inputs.cuboid.height) +
-                (2 *inputs.cuboid.height * inputs.cuboid.length) +
-                (2 *inputs.cuboid.width * inputs.cuboid.length)
-            )
+                (2 * inputs.cuboid.width * inputs.cuboid.height)
+                + (2 * inputs.cuboid.height * inputs.cuboid.length)
+                + (2 * inputs.cuboid.width * inputs.cuboid.length)
+            ),
         )
