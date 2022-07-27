@@ -38,13 +38,6 @@ Further info [in their config docs](https://python-poetry.org/docs/configuration
 
 With this done, setting up the environment should be as simple as running
 ```shell
-poetry install --extras visualisations
-```
-Note the `--extras visualisations` is optional if you do not want to run the visualisation dashboard.
-
-For a minimal installation that just supports running the engine,
-use
-```shell
 poetry install
 ```
 
