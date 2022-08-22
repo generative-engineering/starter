@@ -15,6 +15,7 @@ secondary = true
 [tool.poetry.dependencies]
 python = "^3.8,<3.11"
 generative-engine = "*"
+generative-geometry = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.2"

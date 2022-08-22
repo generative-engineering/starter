@@ -2,8 +2,19 @@ from typing import Text
 
 from generative.engine.fabric.function import FabricFunction
 from generative.engine.fabric.type import FabricType
+from generative.geometry import (
+    Angle,
+    Body3d,
+    Interval,
+    Length,
+    LineSegment2d,
+    Point2d,
+    Region2d,
+    SketchPlane3d,
+)
 
 from cube.analysis import Cuboid
+from cube.rendering import _resolve_output_path
 
 
 class GeometryOutput(FabricType):
@@ -13,6 +24,32 @@ class GeometryOutput(FabricType):
 class CubeCADGenerator(FabricFunction):
     def run(self, inputs: Cuboid) -> GeometryOutput:
 
-        # TODO: Add example use of generative python geometry wrappers
+        x0 = Length.ZERO
+        x1 = Length.meters(inputs.length)
+        y0 = Length.ZERO
+        y1 = Length.meters(inputs.width)
 
-        return GeometryOutput(stl_file="todo")
+        p0 = Point2d.xy(x0, y0)
+        p1 = Point2d.xy(x0, y1)
+        p2 = Point2d.xy(x1, y1)
+        p3 = Point2d.xy(x1, y0)
+
+        square = Region2d.bounded_by(
+            [
+                LineSegment2d.with_endpoints(p0, p1),
+                LineSegment2d.with_endpoints(p1, p2),
+                LineSegment2d.with_endpoints(p2, p3),
+                LineSegment2d.with_endpoints(p3, p0),
+            ]
+        )
+
+        sketch_plane = SketchPlane3d.XY
+        extent = Interval.with_endpoints(Length.ZERO, Length.meters(inputs.height))
+
+        body = Body3d.extrude(square, sketch_plane, extent)
+
+        stl_path = _resolve_output_path("cube", "stl", "output", "geometry")
+
+        body.save_stl(Length.millimeters(0.5), Angle.degrees(5.0), str(stl_path))
+
+        return GeometryOutput(stl_file=str(stl_path))

@@ -7,7 +7,7 @@ stages:
 
 variables:
   POETRY_VERSION: 1.1.13
-  DESIGN_SPEC: designs/cube.yaml
+  DESIGN_SPEC: designs/explore_cube.yaml
 
 before_script:
   - pip install -qq "poetry==$POETRY_VERSION"

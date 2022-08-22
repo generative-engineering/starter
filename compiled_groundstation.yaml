@@ -1,3 +1,7 @@
+CubeCADGenerator:
+  include: 'yes'
+  inputs:
+  - from: CubeGenerator
 CubeGenerator:
   include: 'yes'
   inputs:

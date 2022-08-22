@@ -25,7 +25,7 @@ class CubeRenderInputs(FabricType):
 class CuboidRenderer(FabricFunction):
     def run(self, inputs: CubeRenderInputs) -> CuboidRender:
 
-        image_file = _resolve_render_path(inputs.render_name, "txt")
+        image_file = _resolve_output_path(inputs.render_name, "txt")
         with open(image_file, "w") as f:
             f.write("Replace me with an image!")
 
@@ -37,7 +37,7 @@ class CuboidRenderer(FabricFunction):
 ###################################################################################################
 
 
-def _resolve_render_path(
+def _resolve_output_path(
     name: Text,
     extension: Text,
     output_directory: Text = "output",

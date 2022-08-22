@@ -49,6 +49,16 @@ VolumeAnalysis:
     surface_area:
       - objective: minimize
 
+CubeCADGenerator:
+  inputs:
+    height:
+      - from: CubeGenerator-height
+    length:
+      - from: CubeGenerator-length
+    width:
+      - from: CubeGenerator-width
+
+
 CuboidRenderer:
   inputs:
     render_name:
