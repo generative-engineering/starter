@@ -3,8 +3,7 @@ import os
 from pathlib import Path
 from typing import Text
 
-from generative.engine.fabric.function import FabricFunction
-from generative.engine.fabric.type import FabricType, Field
+from generative.fabric import FabricFunction, FabricType, Field
 
 from cube.analysis import Cuboid
 
@@ -22,7 +21,7 @@ class CubeRenderInputs(FabricType):
     render_directory_name: Text = Field(default="renders")
 
 
-class CuboidRenderer(FabricFunction):
+class CuboidRenderer(FabricFunction[CubeRenderInputs, CuboidRender]):
     def run(self, inputs: CubeRenderInputs) -> CuboidRender:
 
         image_file = _resolve_output_path(inputs.render_name, "txt")
