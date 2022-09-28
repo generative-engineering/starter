@@ -1,7 +1,6 @@
 from typing import Text
 
-from generative.engine.fabric.function import FabricFunction
-from generative.engine.fabric.type import FabricType, Field
+from generative.fabric import FabricFunction, FabricType, Field
 
 
 class Cuboid(FabricType):
@@ -21,7 +20,7 @@ class VolumeInput(FabricType):
     cuboid: Cuboid
 
 
-class VolumeAnalysis(FabricFunction):
+class VolumeAnalysis(FabricFunction[VolumeInput, GeometryVolume]):
     def run(self, inputs: VolumeInput) -> GeometryVolume:
         return GeometryVolume(
             cuboid=inputs.cuboid,

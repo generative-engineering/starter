@@ -34,4 +34,4 @@ test-design-file:
   stage: test
   needs: [ ]
   script:
-    - poetry run engine compile --fabric "src" --compiled-file "compiled_groundstation.yaml" "$DESIGN_SPEC"
+    - poetry run explorer compile --fabric "src" --compiled-file "compiled_groundstation.yaml" "$DESIGN_SPEC"

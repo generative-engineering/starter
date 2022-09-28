@@ -46,7 +46,7 @@ Running First Exploration
 
 Once you have set up (as above), try the following to "compile" the design file:
 ```shell
-poetry run engine compile --fabric src designs/cube.yaml --compiled-file designs/cube.compiled.yaml
+poetry run explorer compile --fabric src designs/cube.yaml --compiled-file designs/cube.compiled.yaml
 ```
 If this succeeds (it won't print anything, but no errors should be raised),
 you can inspect the "completed" design file at `designs/cube.compiled.yaml`.
@@ -54,7 +54,7 @@ If not, you may not have followed the setup instructions properly.
 
 If this works, you can run an exploration with the following:
 ```shell
-poetry run engine run --fabric src designs/cube.yaml --output-file output/results.json
+poetry run explorer run --fabric src designs/cube.yaml --output-file output/results.json
 ```
 which will save the overall exploration results in `ouptut/results.json`.
 At the moment, custom visualisations for interpreting these results have to be built.
