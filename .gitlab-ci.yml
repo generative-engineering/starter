@@ -6,7 +6,7 @@ stages:
   - test
 
 variables:
-  POETRY_VERSION: 1.1.13
+  POETRY_VERSION: 1.2.2
   DESIGN_SPEC: designs/explore_cube.yaml
 
 before_script:
