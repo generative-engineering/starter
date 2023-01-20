@@ -20,16 +20,16 @@ global:
 CubeGenerator:
   inputs:
     specified_width:
-    - from: overall_width
+      - from: overall_width
 
 RectangularPrismGenerator:
   inputs:
     specified_width:
-    - from: overall_width
+      - from: overall_width
     specified_length:
-    - variable:
-        low: 0.5
-        high: 3.5
+      - variable:
+          low: 0.5
+          high: 3.5
 
 VolumeAnalysis:
   inputs:

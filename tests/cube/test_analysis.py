@@ -1,3 +1,3 @@
-def test_volume_analysis():
+def test_volume_analysis() -> None:
     # todo
     pass

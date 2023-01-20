@@ -3,22 +3,21 @@ import os
 from pathlib import Path
 from typing import Text
 
-from generative.fabric import FabricFunction, FabricType, Field
+from generative.fabric import FabricFunction, FabricType, field
 
 from cube.analysis import Cuboid
 
 
 class CuboidRender(FabricType):
-    image_file: Text = Field(
-        description="Text representation of the file path that the image has been written to"
-    )
+    image_file: Text
+    """Text representation of the file path that the image has been written to"""
 
 
 class CubeRenderInputs(FabricType):
     cuboid: Cuboid
     render_name: Text
-    output_directory_name: Text = Field(default="output")
-    render_directory_name: Text = Field(default="renders")
+    output_directory_name: Text = field(default="output")
+    render_directory_name: Text = field(default="renders")
 
 
 class CuboidRenderer(FabricFunction[CubeRenderInputs, CuboidRender]):
