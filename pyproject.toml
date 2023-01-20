@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "microtechnology-skeleton"
-version = "0.1.0"
+version = "0.2.0"
 description = "Template for Generative Microtechnologies"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
 packages = [
@@ -14,15 +14,16 @@ secondary = true
 
 [tool.poetry.dependencies]
 python = "^3.8,<3.11"
-generative-fabric-definitions = "*"
+generative-fabric-definitions = "^3.0.1"
 generative-geometry = "*"
 
 [tool.poetry.dev-dependencies]
+mypy = "^0.982"
 pytest = "^7.1.2"
 black = "^22.3.0"
 isort = "^5.10.1"
 flake8 = "^4.0.1"
-generative-explorer = "*"
+generative-explorer = "^11.0.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -36,3 +37,13 @@ line-length = 99
 [tool.isort]
 profile = "black"
 extend_skip = ["result"]
+
+[tool.mypy]
+strict = true
+files = "src,tests"
+warn_unused_configs = true
+namespace_packages = true
+warn_return_any = true
+show_error_context = true
+show_error_codes = true
+pretty = true

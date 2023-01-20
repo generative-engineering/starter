@@ -1,8 +1,8 @@
-def test_prism_parametrisation():
+def test_prism_parametrisation() -> None:
     # todo
     pass
 
 
-def test_cube_parametrisation():
+def test_cube_parametrisation() -> None:
     # todo
     pass

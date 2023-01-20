@@ -23,15 +23,22 @@ lint-python:
     - poetry run isort --check src tests
     - poetry run black --check src tests
     - poetry run flake8 src tests
+    - poetry run mypy
 
 test-python:
   stage: test
   needs: [ ]
   script:
-    - poetry run pytest tests
+    - poetry run pytest
 
-test-design-file:
+test-design-file-runs:
   stage: test
   needs: [ ]
   script:
-    - poetry run explorer compile --fabric "src" --compiled-file "compiled_groundstation.yaml" "$DESIGN_SPEC"
+    - poetry run explorer run --fabric src $DESIGN_SPEC
+
+test-design-files-compile:
+  stage: test
+  needs: [ ]
+  script:
+    - for f in designs/*.yaml; do poetry run explorer compile --fabric src $f; done

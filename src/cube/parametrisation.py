@@ -1,15 +1,15 @@
-from generative.fabric import FabricFunction, FabricType, Field
+from generative.fabric import FabricFunction, FabricType, field
 
 from cube.analysis import Cuboid
 
 
 class CubeDimensions(FabricType):
-    specified_width: float = Field(gt=0)
+    specified_width: float = field(lower=0)
 
 
 class PrismDimensions(FabricType):
-    specified_width: float = Field(gt=0)
-    specified_length: float = Field(gt=0)
+    specified_width: float = field(lower=0)
+    specified_length: float = field(lower=0)
 
 
 class CubeGenerator(FabricFunction[CubeDimensions, Cuboid]):
