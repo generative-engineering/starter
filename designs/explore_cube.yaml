@@ -11,10 +11,11 @@ _exact:
 
 # Set any global variables you want to re-use here
 global:
-  overall_width:
-    - variable:
-        low: 1.0
-        high: 2.5
+  inputs:
+    overall_width:
+      - variable:
+          low: 1.0
+          high: 2.5
 
 # Define the exploration parameters and connections for your functions here
 CubeGenerator:

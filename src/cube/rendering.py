@@ -1,5 +1,5 @@
-import datetime
 import os
+from datetime import datetime
 from pathlib import Path
 from typing import Text
 
@@ -62,12 +62,4 @@ def timestamp(a_string: Text) -> Text:
     Useful to help distinguish files generated inside explorations in a human-readable way.
     """
 
-    return (
-        a_string
-        + "_"
-        + str(datetime.datetime.now())
-        .replace(" ", "")
-        .replace(".", "")
-        .replace(":", "")
-        .replace("-", "")[0:-2]
-    )
+    return datetime.utcnow().strftime(f"{a_string}_%Y%m%d%H%M%S%f")
