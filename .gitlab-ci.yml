@@ -19,11 +19,7 @@ lint-python:
   stage: lint
   needs: [ ]
   script:
-    # Run all the linting in a sensible order
-    - poetry run isort --check src tests
-    - poetry run black --check src tests
-    - poetry run flake8 src tests
-    - poetry run mypy
+    - ./bin/lint.sh --check
 
 test-python:
   stage: test
