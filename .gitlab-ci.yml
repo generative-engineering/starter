@@ -31,10 +31,10 @@ test-design-file-runs:
   stage: test
   needs: [ ]
   script:
-    - poetry run explorer run --fabric src $DESIGN_SPEC
+    - poetry run explorer run $DESIGN_SPEC
 
 test-design-files-compile:
   stage: test
   needs: [ ]
   script:
-    - for f in designs/*.yaml; do poetry run explorer compile --fabric src $f; done
+    - for f in designs/*.yaml; do poetry run explorer compile $f; done
