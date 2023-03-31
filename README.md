@@ -18,14 +18,14 @@ The steps below can be kept in the new repo too.
 - [ ] Run an explorer compile to make sure it is valid, run the command:
 	
 ```shell
-poetry run explorer compile --fabric src designs/cube.yaml
+poetry run explorer compile designs/cube.yaml
 ```
 - It won't print anything, but no errors should be raised. You can inspect the "completed" design file at `designs/cube.compiled.yaml`.
 	- If it fails, then you may not have followed the setup instructions properly.
 - [ ] Run an exploration: 
 
 ```shell
-poetry run explorer run --fabric src designs/cube.yaml
+poetry run explorer run designs/cube.yaml
 ```
 
 ## What's Next?
@@ -33,5 +33,5 @@ poetry run explorer run --fabric src designs/cube.yaml
 - Start hacking! Replace the simple `cube` models with something wild.
 - When pushing to the cloud, append `--save-to-cloud` to the explorer run command above:
 ```shell
-poetry run explorer run --fabric src designs/cube.yaml --save-to-cloud
+poetry run explorer run designs/cube.yaml --save-to-cloud
 ```
