@@ -1,5 +1,3 @@
-from typing import Text
-
 from generative.fabric import FabricFunction, FabricType, field
 
 
@@ -16,7 +14,7 @@ class GeometryVolume(FabricType):
 
 
 class VolumeInput(FabricType):
-    name: Text
+    name: str
     cuboid: Cuboid
 
 

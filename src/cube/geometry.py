@@ -1,5 +1,3 @@
-from typing import Text
-
 from generative.fabric import FabricFunction, FabricType
 from generative.geometry import (
     Angle,
@@ -17,7 +15,7 @@ from cube.rendering import _resolve_output_path
 
 
 class GeometryOutput(FabricType):
-    stl_file: Text
+    stl_file: str
 
 
 class CubeCADGenerator(FabricFunction[Cuboid, GeometryOutput]):

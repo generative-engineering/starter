@@ -16,16 +16,23 @@ The steps below can be kept in the new repo too.
 
 - [ ] Create a new design file, such as `designs/cube.yaml`
 - [ ] Run an explorer compile to make sure it is valid, run the command:
-	
+
 ```shell
 poetry run explorer compile designs/cube.yaml
 ```
 - It won't print anything, but no errors should be raised. You can inspect the "completed" design file at `designs/cube.compiled.yaml`.
 	- If it fails, then you may not have followed the setup instructions properly.
-- [ ] Run an exploration: 
+- [ ] Run an exploration:
 
 ```shell
 poetry run explorer run designs/cube.yaml
+```
+
+### Linting
+Use the script (via Poetry):
+
+```shell
+poetry run bin/lint.sh
 ```
 
 ## What's Next?
