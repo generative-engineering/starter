@@ -1,7 +1,6 @@
 import os
 from datetime import datetime
 from pathlib import Path
-from typing import Text
 
 from generative.fabric import FabricFunction, FabricType, field
 
@@ -9,15 +8,15 @@ from cube.analysis import Cuboid
 
 
 class CuboidRender(FabricType):
-    image_file: Text
+    image_file: str
     """Text representation of the file path that the image has been written to"""
 
 
 class CubeRenderInputs(FabricType):
     cuboid: Cuboid
-    render_name: Text
-    output_directory_name: Text = field(default="output")
-    render_directory_name: Text = field(default="renders")
+    render_name: str
+    output_directory_name: str = field(default="output")
+    render_directory_name: str = field(default="renders")
 
 
 class CuboidRenderer(FabricFunction[CubeRenderInputs, CuboidRender]):
@@ -36,10 +35,10 @@ class CuboidRenderer(FabricFunction[CubeRenderInputs, CuboidRender]):
 
 
 def _resolve_output_path(
-    name: Text,
-    extension: Text,
-    output_directory: Text = "output",
-    render_directory: Text = "renders",
+    name: str,
+    extension: str,
+    output_directory: str = "output",
+    render_directory: str = "renders",
 ) -> Path:
 
     if not os.path.isdir(output_directory):
@@ -56,7 +55,7 @@ def _resolve_output_path(
     return Path(os.path.abspath(os.path.join(render_dir, f"{timestamp(name)}.{extension}")))
 
 
-def timestamp(a_string: Text) -> Text:
+def timestamp(a_string: str) -> str:
     """
     Add a filepath-friendly timestamp to the end of a string.
     Useful to help distinguish files generated inside explorations in a human-readable way.
