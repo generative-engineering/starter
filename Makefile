@@ -10,7 +10,7 @@ clean: ## Clean output folder
 	@rm -rf ./output/**
 
 lint: ## Run linter on ./src and ./tests
-	@./bin/lint.sh
+	@poetry run ./bin/lint.sh
 
 design_files: ## Test design files by compiling them
 	@echo "Compiling design files to test validity ..."
