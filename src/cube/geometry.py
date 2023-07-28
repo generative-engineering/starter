@@ -20,7 +20,6 @@ class GeometryOutput(FabricType):
 
 class CubeCADGenerator(FabricFunction[Cuboid, GeometryOutput]):
     def run(self, inputs: Cuboid) -> GeometryOutput:
-
         x0 = Length.ZERO
         x1 = Length.meters(inputs.length)
         y0 = Length.ZERO

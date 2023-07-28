@@ -18,10 +18,10 @@ generative-fabric-definitions = "^3.0.1"
 generative-geometry = "*"
 
 [tool.poetry.dev-dependencies]
-mypy = "^0.982"
+mypy = "^1.4.1"
 pytest = "^7.1.2"
-black = "^22.3.0"
-ruff = "^0.0.277"
+black = "^23.7.0"
+ruff = "^0.0.280"
 generative-explorer = "^14.2.0"
 
 [build-system]
