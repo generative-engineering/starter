@@ -1,15 +1,16 @@
-from generative.fabric import FabricFunction, FabricType, field
+from generative.fabric import FabricFunction, FabricType
+from pydantic import Field
 
 
 class Cuboid(FabricType):
-    length: float = field(lower=0)
-    width: float = field(lower=0)
-    height: float = field(lower=0)
+    length: float = Field(gt=0)
+    width: float = Field(gt=0)
+    height: float = Field(gt=0)
 
 
 class GeometryVolume(FabricType):
-    volume: float = field(lower=0)
-    surface_area: float = field(lower=0)
+    volume: float = Field(gt=0)
+    surface_area: float = Field(gt=0)
     cuboid: Cuboid
 
 

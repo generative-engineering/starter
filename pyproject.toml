@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "microtechnology-skeleton"
-version = "0.2.0"
+version = "0.3.0"
 description = "Template for Generative Microtechnologies"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
 packages = [
@@ -13,8 +13,8 @@ url = "https://gitlab.com/api/v4/groups/14110432/-/packages/pypi/simple"
 secondary = true
 
 [tool.poetry.dependencies]
-python = "^3.8,<3.11"
-generative-fabric-definitions = "^3.0.1"
+python = "^3.9"
+generative-fabric-definitions = "*"
 generative-geometry = "*"
 
 [tool.poetry.dev-dependencies]
@@ -22,7 +22,9 @@ mypy = "^1.4.1"
 pytest = "^7.1.2"
 black = "^23.7.0"
 ruff = "^0.0.280"
-generative-explorer = "^14.2.0"
+
+[tool.poetry.scripts]
+server = 'generative.fabric.http.__main__:main'
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -35,8 +37,8 @@ line-length = 99
 
 [tool.ruff]
 line-length = 99
-select = ["E", "F", "B", "Q", "C", "N", "UP"]
-target-version = "py38"
+select = ["E", "F", "B", "Q", "C", "N"]
+target-version = "py39"
 
 [tool.mypy]
 strict = true
@@ -47,3 +49,11 @@ warn_return_any = true
 show_error_context = true
 show_error_codes = true
 pretty = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+# Too noisy to have `-> None` on every test
+# and to type some Generator fixtures is hellish
+# Unfortunately you need to turn *both* these off for this to work.
+allow_incomplete_defs = true
+allow_untyped_defs = true

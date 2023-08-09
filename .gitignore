@@ -1,20 +1,13 @@
-.env
-
 *.swp
 .DS_Store
-
-node_modules
 
 #Python
 .venv
 .coverage
 *__pycache__*
 
-
 # Generative
-*.compiled.yaml
-output/renders/*
-output/*
+output
 
 # IDEs
 .idea
