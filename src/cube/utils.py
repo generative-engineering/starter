@@ -6,18 +6,18 @@ from datetime import datetime
 from pathlib import Path
 
 
-def get_render_path(
-    name: str,
+def timestamped_file_path(
+    fname: str,
     extension: str,
-    output_directory: str = "output",
-    render_directory: str = "renders",
+    sub_dir_name: str,
+    output_dir_name: str = "output",
 ) -> Path:
-    """Returns the renders directory"""
-    render_dir = init_dir(Path(output_directory).absolute() / render_directory)
-    return render_dir / f"{timestamp(name)}.{extension}"
+    """Returns the timestamped path to file in sub directory inside output directory"""
+    render_dir = guaranteed_dir(Path(output_dir_name) / sub_dir_name)
+    return render_dir / f"{timestamp(fname)}.{extension}"
 
 
-def init_dir(p: Path) -> Path:
+def guaranteed_dir(p: Path) -> Path:
     """Creates or recreates an empty directory"""
     dir_ = p.absolute()
     if not dir_.is_dir():

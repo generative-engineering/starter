@@ -1,11 +1,7 @@
-from generative.fabric import FabricFunction, FabricType
+from generative.fabric import fabric_function, FabricType
 
-from cube.analysis import Cuboid
+from cube.geometry import Cuboid
 from pydantic import Field
-
-
-class CubeDimensions(FabricType):
-    specified_width: float = Field(gt=0)
 
 
 class PrismDimensions(FabricType):
@@ -13,23 +9,22 @@ class PrismDimensions(FabricType):
     specified_length: float = Field(gt=0)
 
 
-class CubeGenerator(FabricFunction[CubeDimensions, Cuboid]):
-    def run(self, inputs: CubeDimensions) -> Cuboid:
-        return Cuboid(
-            width=inputs.specified_width,
-            height=inputs.specified_width,
-            length=inputs.specified_width,
-        )
+@fabric_function
+def cube_generator(side_length: float) -> Cuboid:
+    return Cuboid(
+        width=side_length,
+        height=side_length,
+        length=side_length,
+    )
 
 
 class RectangleOutputs(FabricType):
     cuboid: Cuboid
 
 
-class RectangularPrismGenerator(FabricFunction[PrismDimensions, Cuboid]):
-    def run(self, inputs: PrismDimensions) -> Cuboid:
-        return Cuboid(
-            width=inputs.specified_width,
-            height=inputs.specified_width,
-            length=inputs.specified_length,
-        )
+def rectangular_prism_generator(inputs: PrismDimensions) -> Cuboid:
+    return Cuboid(
+        width=inputs.specified_width,
+        height=inputs.specified_width,
+        length=inputs.specified_length,
+    )

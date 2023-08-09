@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "microtechnology-skeleton"
-version = "0.3.0"
+version = "0.4.0"
 description = "Template for Generative Microtechnologies"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
 packages = [
@@ -15,7 +15,8 @@ secondary = true
 [tool.poetry.dependencies]
 python = "^3.9"
 generative-fabric-definitions = "*"
-generative-geometry = "*"
+cadquery = "^2.3.1"
+cadquery-ocp = "=7.7.0"
 
 [tool.poetry.dev-dependencies]
 mypy = "^1.4.1"
