@@ -15,35 +15,9 @@ Setup
 - [ ] Follow our [poetry setup guide](https://generative.gitlab.io/team/documentation/technical/languages/python/python-setup.html#poetry).
 
 
-Running First Exploration
----------------------------
-
-- [ ] Create a new design file, such as `designs/cube.yaml`
-- [ ] Run an explorer compile to make sure it is valid, run the command:
-
-```shell
-poetry run explorer compile designs/cube.yaml
-```
-- It won't print anything, but no errors should be raised. You can inspect the "completed" design file at `designs/cube.compiled.yaml`.
-	- If it fails, then you may not have followed the setup instructions properly.
-- [ ] Run an exploration:
-
-```shell
-poetry run explorer run designs/cube.yaml
-```
-
 ### Linting
 Use the script (via Poetry):
 
 ```shell
 poetry run bin/lint.sh
-```
-
-What's Next?
-------------
-
-- Start hacking! Replace the simple `cube` models with something wild.
-- When pushing to the cloud, append `--save-to-cloud` to the explorer run command above:
-```shell
-poetry run explorer run designs/cube.yaml --save-to-cloud
 ```

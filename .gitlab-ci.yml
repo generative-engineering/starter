@@ -1,20 +1,17 @@
 default:
-  image: python:3.8-slim-buster
+  image: python:3.9
 
 stages:
   - lint
   - test
 
 variables:
-  POETRY_VERSION: 1.2.2
-  DESIGN_SPEC: designs/explore_cube.yaml
-
+  POETRY_VERSION: 1.4.2
 before_script:
-  - pip install -qq "poetry==$POETRY_VERSION"
-  # Beware the tokens: https://github.com/python-poetry/poetry/issues/2889
+  - curl -sSL https://install.python-poetry.org | python3 - --version $POETRY_VERSION
+  - export PATH="/root/.local/bin:$PATH"
   - poetry config -- http-basic.gitlab gitlab-ci-token "$CI_JOB_TOKEN"
   - poetry install --sync
-  - poetry debug info
 
 lint-python:
   stage: lint
@@ -29,14 +26,9 @@ test-python:
   script:
     - poetry run pytest
 
-test-design-file-runs:
+test-catwalk:
   stage: test
   needs: [ ]
   script:
-    - poetry run explorer run $DESIGN_SPEC
-
-test-design-files-compile:
-  stage: test
-  needs: [ ]
-  script:
-    - for f in designs/*.yaml; do poetry run explorer compile $f; done
+    - timeout 5 poetry run server src/cube &
+    - curl -sS --retry-connrefused --retry 3 --fail http://localhost:3000/docs

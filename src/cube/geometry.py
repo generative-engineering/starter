@@ -1,4 +1,4 @@
-from generative.fabric import FabricFunction, FabricType
+from generative.fabric import FabricFunction, FabricType, FileAsset
 from generative.geometry import (
     Angle,
     Body3d,
@@ -11,11 +11,11 @@ from generative.geometry import (
 )
 
 from cube.analysis import Cuboid
-from cube.rendering import _resolve_output_path
+from cube.utils import get_render_path
 
 
 class GeometryOutput(FabricType):
-    stl_file: str
+    stl_asset: FileAsset
 
 
 class CubeCADGenerator(FabricFunction[Cuboid, GeometryOutput]):
@@ -44,8 +44,8 @@ class CubeCADGenerator(FabricFunction[Cuboid, GeometryOutput]):
 
         body = Body3d.extrude(square, sketch_plane, extent)
 
-        stl_path = _resolve_output_path("cube", "stl", "output", "geometry")
+        stl_path = get_render_path("cube", "stl", "output", "geometry")
 
         body.save_stl(Length.millimeters(0.5), Angle.degrees(5.0), str(stl_path))
 
-        return GeometryOutput(stl_file=str(stl_path))
+        return GeometryOutput(stl_asset=FileAsset(stl_path))
