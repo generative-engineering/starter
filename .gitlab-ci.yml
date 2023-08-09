@@ -5,6 +5,14 @@ stages:
   - lint
   - test
 
+# See https://docs.gitlab.com/ee/ci/yaml/workflow.html#switch-between-branch-pipelines-and-merge-request-pipelines
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH
+
 variables:
   POETRY_VERSION: 1.4.2
 before_script:
@@ -33,5 +41,5 @@ test-catwalk:
   stage: test
   needs: [ ]
   script:
-    - timeout 9 poetry run server src/cube &
-    - curl -sS --retry-connrefused --retry 4 --fail http://localhost:3000/docs
+    - timeout 7 poetry run server src/cube &
+    - curl -sS --retry-connrefused --retry 5 --retry-delay 1 --fail http://localhost:3000/docs
