@@ -6,6 +6,8 @@ Developing your own Fabric Functions
 
 - Create a new repository through terraform. Follow instructions in our [gitlab infrastructure repo](https://gitlab.com/generative/infra/gitlab-bootstrap).
 - Copy the contents of the this repository to it. If you already have some functions to use, then copy them too.
+    - Delete the `cube` example package (keeping the `utils.py` file if you want) once you're happy with how it works.
+     Update the package name and path in `pyproject.toml` and `gitlab-ci.yml` files.
 - Create your new Fabric Functions following the usage guide in the [Fabric Definitions README](https://gitlab.com/generative/fabric/fabric-definitions/-/blob/main/README.md?ref_type=heads#usage).
     - Use `pytest` for end-to-end tests and to store example uses.
 - Update the README to explain the functionality, keeping the relevant parts from below.

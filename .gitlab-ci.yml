@@ -9,6 +9,9 @@ variables:
   POETRY_VERSION: 1.4.2
 before_script:
   - curl -sSL https://install.python-poetry.org | python3 - --version $POETRY_VERSION
+    # libgl1 is required for CADQuery
+  - apt-get update -q
+  - apt-get install -qy libgl1
   - export PATH="/root/.local/bin:$PATH"
   - poetry config -- http-basic.gitlab gitlab-ci-token "$CI_JOB_TOKEN"
   - poetry install --sync
@@ -30,5 +33,5 @@ test-catwalk:
   stage: test
   needs: [ ]
   script:
-    - timeout 5 poetry run server src/cube &
-    - curl -sS --retry-connrefused --retry 3 --fail http://localhost:3000/docs
+    - timeout 9 poetry run server src/cube &
+    - curl -sS --retry-connrefused --retry 4 --fail http://localhost:3000/docs
