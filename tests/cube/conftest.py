@@ -1,12 +1,15 @@
 from pytest import fixture
-import cadquery as cq
 
 from cube.geometry import Cuboid
+from pathlib import Path
+
+
+CUBE_TESTS_DIR = Path(__file__).parent
 
 
 @fixture
-def a_cad_query_cuboid() -> cq.Workplane:
-    return cq.Workplane("XY").box(length=2, width=3, height=5)
+def step_file() -> Path:
+    return CUBE_TESTS_DIR / "data" / "cube.step"
 
 
 @fixture
