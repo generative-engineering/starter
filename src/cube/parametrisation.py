@@ -18,10 +18,7 @@ def cube_generator(side_length: float) -> Cuboid:
     )
 
 
-class RectangleOutputs(FabricType):
-    cuboid: Cuboid
-
-
+@fabric_function
 def rectangular_prism_generator(inputs: PrismDimensions) -> Cuboid:
     return Cuboid(
         width=inputs.specified_width,

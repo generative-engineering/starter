@@ -1,17 +1,15 @@
-from generative.fabric import fabric_function, FileAsset
+from generative.fabric import fabric_function, FileAsset, Asset
 
 import cadquery as cq
-from cube.geometry import FileNameAndLocation
 from cube.utils import timestamped_file_path
 
 
 @fabric_function
-def step_renderer(step_file: FileAsset, output_file: FileNameAndLocation) -> FileAsset:
+def step_renderer(step_asset: Asset) -> Asset:
+    step_file = step_asset.download()
     body = cq.importers.importStep(str(step_file))  # type: ignore
     image_path = timestamped_file_path(
-        output_file.name,
         "svg",
-        output_file.relative_directory,
     )
     cq.exporters.export(body, str(image_path))
 

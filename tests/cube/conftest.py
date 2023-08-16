@@ -1,6 +1,6 @@
 from pytest import fixture
 
-from cube.geometry import Cuboid, FileNameAndLocation
+from cube.geometry import Cuboid
 from pathlib import Path
 
 
@@ -18,10 +18,6 @@ def a_cuboid() -> Cuboid:
 
 
 @fixture
-def step_output_file_location() -> FileNameAndLocation:
-    return FileNameAndLocation(name="test_step", relative_directory="output/step")
-
-
-@fixture
-def render_output_file_location() -> FileNameAndLocation:
-    return FileNameAndLocation(name="test_render", relative_directory="output/render")
+def a_cube() -> Cuboid:
+    side_length = 2
+    return Cuboid(length=side_length, width=side_length, height=side_length)

@@ -186,6 +186,18 @@ files = [
 numpy = "*"
 
 [[package]]
+name = "certifi"
+version = "2023.7.22"
+description = "Python package for providing Mozilla's CA Bundle."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "certifi-2023.7.22-py3-none-any.whl", hash = "sha256:92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9"},
+    {file = "certifi-2023.7.22.tar.gz", hash = "sha256:539cc1d13202e33ca466e88b2807e29f4c13049d6d87031a3c110744495cb082"},
+]
+
+[[package]]
 name = "click"
 version = "8.1.6"
 description = "Composable command line interface toolkit"
@@ -329,19 +341,20 @@ all = ["email-validator (>=2.0.0)", "httpx (>=0.23.0)", "itsdangerous (>=1.1.0)"
 
 [[package]]
 name = "generative-fabric-definitions"
-version = "7.3.1"
+version = "9.0.0"
 description = "A library to help create Generative Fabric components."
 category = "main"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "generative_fabric_definitions-7.3.1-py3-none-any.whl", hash = "sha256:4db6a8014666ebfa967ff3e196e10966548bb5ca6fc5a8044ca701e328b06ab3"},
-    {file = "generative_fabric_definitions-7.3.1.tar.gz", hash = "sha256:b92ccf8c628221fe93a0f4c7d53456a8879d3c92a5d458f97fb8ad4d9fb8f660"},
+    {file = "generative_fabric_definitions-9.0.0-py3-none-any.whl", hash = "sha256:c39dd71b28d9c99ef9c7a2611ccc932524eecad016f2fc83a893242da55523a4"},
+    {file = "generative_fabric_definitions-9.0.0.tar.gz", hash = "sha256:960f3637d12beb3a822e8bb95d4181c19c05b7d52edb4392dbb87aaded317300"},
 ]
 
 [package.dependencies]
 coloredlogs = ">=15.0.1,<16.0.0"
 fastapi = ">=0.100.0,<0.101.0"
+httpx = ">=0.24.1,<0.25.0"
 pydantic = ">=2.0.3,<3.0.0"
 uvicorn = ">=0.22.0,<0.23.0"
 
@@ -361,6 +374,52 @@ files = [
     {file = "h11-0.14.0-py3-none-any.whl", hash = "sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761"},
     {file = "h11-0.14.0.tar.gz", hash = "sha256:8f19fbbe99e72420ff35c00b27a34cb9937e902a8b810e2c88300c6f0a3b699d"},
 ]
+
+[[package]]
+name = "httpcore"
+version = "0.17.3"
+description = "A minimal low-level HTTP client."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "httpcore-0.17.3-py3-none-any.whl", hash = "sha256:c2789b767ddddfa2a5782e3199b2b7f6894540b17b16ec26b2c4d8e103510b87"},
+    {file = "httpcore-0.17.3.tar.gz", hash = "sha256:a6f30213335e34c1ade7be6ec7c47f19f50c56db36abef1a9dfa3815b1cb3888"},
+]
+
+[package.dependencies]
+anyio = ">=3.0,<5.0"
+certifi = "*"
+h11 = ">=0.13,<0.15"
+sniffio = ">=1.0.0,<2.0.0"
+
+[package.extras]
+http2 = ["h2 (>=3,<5)"]
+socks = ["socksio (>=1.0.0,<2.0.0)"]
+
+[[package]]
+name = "httpx"
+version = "0.24.1"
+description = "The next generation HTTP client."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "httpx-0.24.1-py3-none-any.whl", hash = "sha256:06781eb9ac53cde990577af654bd990a4949de37a28bdb4a230d434f3a30b9bd"},
+    {file = "httpx-0.24.1.tar.gz", hash = "sha256:5853a43053df830c20f8110c5e69fe44d035d850b2dfe795e196f00fdb774bdd"},
+]
+
+[package.dependencies]
+certifi = "*"
+httpcore = ">=0.15.0,<0.18.0"
+idna = "*"
+sniffio = "*"
+
+[package.extras]
+brotli = ["brotli", "brotlicffi"]
+cli = ["click (>=8.0.0,<9.0.0)", "pygments (>=2.0.0,<3.0.0)", "rich (>=10,<14)"]
+http2 = ["h2 (>=3,<5)"]
+socks = ["socksio (>=1.0.0,<2.0.0)"]
 
 [[package]]
 name = "humanfriendly"
