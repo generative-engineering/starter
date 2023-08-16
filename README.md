@@ -9,7 +9,9 @@ Developing your own Fabric Functions
     - Delete the `cube` example package (keeping the `utils.py` file if you want) once you're happy with how it works.
      Update the package name and path in `pyproject.toml` and `gitlab-ci.yml` files.
 - Create your new Fabric Functions following the usage guide in the [Fabric Guide](https://gitlab.com/generative/fabric/fabric-definitions/-/blob/main/docs/fabric_guide.md).
-    - Use `pytest` for end-to-end tests and to store example uses.
+    - Use `pytest` for unit tests and also for end-to-end tests for benchmarking or storing examples.
+    As shown in the [example](/tests/cube/test_end_to_end.py),
+    use fixtures to provide fabric function inputs, and call fabric functions in the order they'll be called during graph execution.
 - Update the README to explain the functionality, keeping the relevant parts from below.
 
 Setup

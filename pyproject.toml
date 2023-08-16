@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "microtechnology-skeleton"
-version = "0.4.0"
+version = "0.4.1"
 description = "Template for Generative Microtechnologies"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
 packages = [
