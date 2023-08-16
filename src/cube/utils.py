@@ -7,13 +7,12 @@ from pathlib import Path
 
 
 def timestamped_file_path(
-    fname: str,
     extension: str,
-    rel_dir: str,
 ) -> Path:
-    """Returns timestamped filepath in provided relative directory"""
-    render_dir = guaranteed_dir(Path(rel_dir).absolute())
-    return render_dir / f"{timestamp(fname)}.{extension}"
+    """Returns filepath with timestamp as the name, along with provided extension
+    in output directory"""
+    render_dir = guaranteed_dir(Path("output").absolute())
+    return render_dir / f"{timestamp('')}.{extension}"
 
 
 def guaranteed_dir(p: Path) -> Path:
@@ -31,5 +30,5 @@ def timestamp(a_string: str) -> str:
     Add a filepath-friendly timestamp to the end of a string.
     Useful to help distinguish files generated inside explorations in a human-readable way.
     """
-
-    return datetime.utcnow().strftime(f"{a_string}_%Y%m%d%H%M%S%f")
+    a_string = f"{a_string}_" if a_string else ""
+    return datetime.utcnow().strftime(f"{a_string}%Y%m%d%H%M%S%f")

@@ -1,4 +1,4 @@
-from generative.fabric import fabric_function, FabricType, FileAsset
+from generative.fabric import fabric_function, FabricType, FileAsset, Asset
 from pydantic import Field
 
 import cadquery as cq
@@ -18,8 +18,8 @@ class FileNameAndLocation(FabricType):
 
 
 @fabric_function
-def generate_cuboid_cad(cuboid: Cuboid, output_file: FileNameAndLocation) -> FileAsset:
+def generate_cuboid_cad(cuboid: Cuboid) -> Asset:
     body = cq.Workplane("XY").box(cuboid.length, cuboid.width, cuboid.height)
-    step_path = timestamped_file_path(output_file.name, "step", output_file.relative_directory)
+    step_path = timestamped_file_path("step")
     cq.exporters.export(body, str(step_path))
     return FileAsset(step_path)
