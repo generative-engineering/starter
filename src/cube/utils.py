@@ -9,11 +9,10 @@ from pathlib import Path
 def timestamped_file_path(
     fname: str,
     extension: str,
-    sub_dir_name: str,
-    output_dir_name: str,
+    rel_dir: str,
 ) -> Path:
-    """Returns the timestamped path to file in sub directory inside output directory"""
-    render_dir = guaranteed_dir(Path(output_dir_name) / sub_dir_name)
+    """Returns timestamped filepath in provided relative directory"""
+    render_dir = guaranteed_dir(Path(rel_dir).absolute())
     return render_dir / f"{timestamp(fname)}.{extension}"
 
 

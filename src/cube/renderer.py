@@ -11,8 +11,7 @@ def step_renderer(step_file: FileAsset, output_file: FileNameAndLocation) -> Fil
     image_path = timestamped_file_path(
         output_file.name,
         "svg",
-        output_file.subdirectory,
-        output_file.directory,
+        output_file.relative_directory,
     )
     cq.exporters.export(body, str(image_path))
 

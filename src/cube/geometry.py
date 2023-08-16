@@ -14,15 +14,12 @@ class Cuboid(FabricType):
 
 class FileNameAndLocation(FabricType):
     name: str
-    directory: str = Field(default="output")
-    subdirectory: str
+    relative_directory: str = "output"
 
 
 @fabric_function
-def cuboid_cad_generator(cuboid: Cuboid, output_file: FileNameAndLocation) -> FileAsset:
+def generate_cuboid_cad(cuboid: Cuboid, output_file: FileNameAndLocation) -> FileAsset:
     body = cq.Workplane("XY").box(cuboid.length, cuboid.width, cuboid.height)
-    step_path = timestamped_file_path(
-        output_file.name, "step", output_file.subdirectory, output_file.directory
-    )
+    step_path = timestamped_file_path(output_file.name, "step", output_file.relative_directory)
     cq.exporters.export(body, str(step_path))
     return FileAsset(step_path)
