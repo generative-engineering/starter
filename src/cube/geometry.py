@@ -12,11 +12,6 @@ class Cuboid(FabricType):
     height: float = Field(gt=0)
 
 
-class FileNameAndLocation(FabricType):
-    name: str
-    relative_directory: str = "output"
-
-
 @fabric_function
 def generate_cuboid_cad(cuboid: Cuboid) -> Asset:
     body = cq.Workplane("XY").box(cuboid.length, cuboid.width, cuboid.height)
