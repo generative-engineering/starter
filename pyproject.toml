@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "microtechnology-skeleton"
-version = "0.4.1"
-description = "Template for Generative Microtechnologies"
+name = "generative-starter-project"
+version = "0.5.0"
+description = "Starter Project for Generative Fabric Functions"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
 packages = [
     { include = "cube", from = "src" },
@@ -16,9 +16,9 @@ secondary = true
 python = "^3.9"
 generative-fabric-definitions = "*"
 cadquery = "^2.3.1"
-cadquery-ocp = "=7.7.0"
+cadquery-ocp = "7.7.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 mypy = "^1.4.1"
 pytest = "^7.1.2"
 black = "^23.7.0"
