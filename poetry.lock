@@ -341,14 +341,14 @@ all = ["email-validator (>=2.0.0)", "httpx (>=0.23.0)", "itsdangerous (>=1.1.0)"
 
 [[package]]
 name = "generative-fabric-definitions"
-version = "10.2.0"
+version = "10.3.0"
 description = "A library to help create Generative Fabric components."
 category = "main"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "generative_fabric_definitions-10.2.0-py3-none-any.whl", hash = "sha256:f23b8b9de6d1bb231f7af73377e8a25645b3e1c1811cf00ab32dc95702e9c3c6"},
-    {file = "generative_fabric_definitions-10.2.0.tar.gz", hash = "sha256:5144f98089b0a3b9c2b609179e64c71a45f8d2ebe44fa44071561f1b638acea6"},
+    {file = "generative_fabric_definitions-10.3.0-py3-none-any.whl", hash = "sha256:d15f082bb5edc55bd01154a4dc92344136b1af5bca8493d350ea6a995e602a8a"},
+    {file = "generative_fabric_definitions-10.3.0.tar.gz", hash = "sha256:e15284cac89e445e96610061238494c26bdede036c4e57e527489b280a815202"},
 ]
 
 [package.dependencies]
