@@ -1,9 +1,8 @@
-###################################################################################################
-# Some re-usable python functions to help manage storing data on your local filesystem.
-###################################################################################################
+""" Some re-usable python functions to help manage storing data on your local filesystem. """
 
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
 
 
 def timestamped_file_path(
@@ -12,7 +11,7 @@ def timestamped_file_path(
     """Returns filepath with timestamp as the name, along with provided extension
     in output directory"""
     render_dir = guaranteed_dir(Path("output").absolute())
-    return render_dir / f"{timestamp('')}.{extension}"
+    return render_dir / f"{timestamp()}.{extension}"
 
 
 def guaranteed_dir(p: Path) -> Path:
@@ -25,10 +24,10 @@ def guaranteed_dir(p: Path) -> Path:
     return dir_
 
 
-def timestamp(a_string: str) -> str:
+def timestamp(prefix: Optional[str] = None) -> str:
     """
     Add a filepath-friendly timestamp to the end of a string.
     Useful to help distinguish files generated inside explorations in a human-readable way.
     """
-    a_string = f"{a_string}_" if a_string else ""
-    return datetime.utcnow().strftime(f"{a_string}%Y%m%d%H%M%S%f")
+    prefix = f"{prefix}_" if prefix else ""
+    return datetime.utcnow().strftime(f"{prefix}%Y-%m-%d-%H%M-%S%f")
