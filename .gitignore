@@ -8,8 +8,12 @@
 
 # Generative
 output
+/assets
 
 # IDEs
 .idea
 *.iml
 .vscode
+
+# Direnv
+.direnv

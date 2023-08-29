@@ -15,14 +15,18 @@ workflow:
 
 variables:
   POETRY_VERSION: 1.4.2
+  POETRY_VIRTUALENVS_IN_PROJECT: "true"
+  NIX_IMAGE: "registry.gitlab.com/generative/infra/base-images/nixos:2023.07.21.13.53"
+
 before_script:
   - curl -sSL https://install.python-poetry.org | python3 - --version $POETRY_VERSION
     # libgl1 is required for CADQuery
   - apt-get update -q
-  - apt-get install -qy libgl1
+  - apt-get install -qy --no-install-recommends libgl1
   - export PATH="/root/.local/bin:$PATH"
   - poetry config -- http-basic.gitlab gitlab-ci-token "$CI_JOB_TOKEN"
   - poetry install --sync
+
 
 lint-python:
   stage: lint
@@ -37,9 +41,30 @@ test-python:
   script:
     - poetry run pytest
 
+
 test-catwalk:
   stage: test
   needs: [ ]
   script:
     - timeout 7 poetry run server src/cube &
     - curl -sS --retry-connrefused --retry 5 --retry-delay 1 --fail http://localhost:3000/docs
+
+
+test-in-nix-shell:
+  stage: test
+  needs: [ ]
+  image: $NIX_IMAGE
+  tags:
+    - saas-linux-medium-amd64
+  timeout: 2h
+  variables:
+    CACHIX_AUTH_TOKEN: $CACHIX_AUTH_TOKEN_RW
+    NETRC: /etc/nix/netrc
+  before_script:
+    - echo "machine gitlab.com login $GITLAB_USER password $CI_JOB_TOKEN" >> "$NETRC"
+  script:
+    # First build uses all netrc config, so we can access private repos.
+    - $NIX_CMD run --quiet --impure --extra-sandbox-paths $NETRC -I NETRC="$NETRC" .#poetry config -- http-basic.gitlab gitlab-ci-token "$CI_JOB_TOKEN"
+    - $NIX_CMD run --quiet .#poetry install
+    # Run all the tests
+    - $NIX_CMD develop --quiet --command poetry run pytest
