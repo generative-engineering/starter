@@ -1,9 +1,11 @@
 from pathlib import Path
 from typing import Any
 
-from generative.fabric import Asset, TestingAsset
+from generative.fabric import Asset, TestingAsset, FileAsset
 
 
-def download_asset(step_asset: Asset, **kwargs: Any) -> Path:
+async def download_asset(step_asset: Asset, **kwargs: Any) -> Path:
     """Effectively "downloads" a FileAsset by grabbing it locally (for testing only)"""
-    return TestingAsset.from_asset(step_asset).download(**kwargs)
+    assert isinstance(step_asset, FileAsset), f"Can't use {type(step_asset)}"
+    ta = TestingAsset.from_asset(step_asset)
+    return await ta.download(**kwargs)

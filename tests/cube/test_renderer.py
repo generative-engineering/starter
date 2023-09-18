@@ -8,6 +8,6 @@ from cube.renderer import (
 )
 
 
-def test_cuboid_renderer(step_file: Path):
-    outputs = step_renderer(TestingAsset(step_file))
-    assert download_asset(outputs).exists()
+async def test_cuboid_renderer(step_file: Path):
+    outputs = await step_renderer(TestingAsset(step_file))
+    assert (await download_asset(outputs)).exists()

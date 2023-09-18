@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "generative-starter-project"
-version = "0.5.2"
+version = "0.6.0"
 description = "Starter Project for Generative Fabric Functions"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
 packages = [
@@ -23,6 +23,7 @@ mypy = "^1.4.1"
 pytest = "^7.1.2"
 black = "^23.7.0"
 ruff = "^0.0.280"
+pytest-asyncio = "^0.21.1"
 
 [tool.poetry.scripts]
 server = 'generative.fabric.http.__main__:main'
@@ -58,3 +59,10 @@ module = "tests.*"
 # Unfortunately you need to turn *both* these off for this to work.
 allow_incomplete_defs = true
 allow_untyped_defs = true
+
+
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "--tb=short --doctest-modules --doctest-continue-on-failure"
+asyncio_mode = "auto"
