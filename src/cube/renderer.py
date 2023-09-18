@@ -5,8 +5,8 @@ from cube.utils import timestamped_file_path
 
 
 @fabric_function
-def step_renderer(step_asset: Asset) -> Asset:
-    step_file = step_asset.download(extension="step")
+async def step_renderer(step_asset: Asset) -> Asset:
+    step_file = await step_asset.download(extension="step")
     body = cq.importers.importStep(str(step_file))  # type: ignore
     image_path = timestamped_file_path("svg")
     cq.exporters.export(body, str(image_path))

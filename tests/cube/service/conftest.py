@@ -1,14 +1,13 @@
 import tempfile
+from collections.abc import Iterable
 from pathlib import Path
 from typing import Any
-from collections.abc import Iterable
-from pydantic_core._pydantic_core import Url
 
-from pytest import fixture
-
-from generative.fabric.http.service import create_app
-from starlette.testclient import TestClient
 from fastapi import FastAPI
+from generative.fabric.http.app import create_app
+from pydantic_core._pydantic_core import Url
+from pytest import fixture
+from starlette.testclient import TestClient
 
 
 @fixture(scope="module")

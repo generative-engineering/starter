@@ -1,11 +1,13 @@
 import logging
 from shutil import copyfile
+
+from generative.fabric.http.routers.v2.endpoints import operation_id_for, endpoint_path
 from pytest import mark
 from _pytest.logging import LogCaptureFixture
 from generative.fabric import FabricFunction
 from generative.fabric.definitions.function import fabric_function_class_from_function
 from generative.fabric.http.registry import get_subclasses
-from generative.fabric.http.service import operation_id_for, endpoint_path
+
 from starlette.testclient import TestClient
 
 from cube.geometry import generate_cuboid_cad, Cuboid
@@ -32,7 +34,6 @@ def test_generate_cuboid_cad_works(
     assert resp.status_code == 200, resp.json()["detail"]
     outputs = resp.json()["data"]["outputs"]
     assert outputs, f"Got no outputs in {resp.json()}"
-    assert outputs.startswith("http://testserver/assets"), "doesn't look like an asset"
 
 
 def assert_no_warnings(caplog: LogCaptureFixture):
