@@ -1,7 +1,10 @@
+import functools
 import tempfile
 from collections.abc import Iterable
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
-from typing import Any
+from threading import Thread
+from typing import Any, cast
 
 from fastapi import FastAPI
 from generative.fabric.http.app import create_app
@@ -52,3 +55,26 @@ def openapi_post_paths(client: TestClient, openapi_path: str) -> Iterable[dict[s
 @fixture(scope="module")
 def openapi_post_endpoint_operation_ids(openapi_post_paths: Iterable[dict[str, Any]]) -> list[str]:
     return [ff["operationId"] for ff in openapi_post_paths]
+
+
+@fixture
+def server(tmpdir):
+    handler_cls = functools.partial(SimpleHTTPRequestHandler, directory=tmpdir)
+    server = HTTPServer(("localhost", 0), handler_cls)
+    yield server
+    server.shutdown()
+
+
+@fixture
+def server_thread(server):
+    t = Thread(target=server.serve_forever)
+    t.start()
+    yield
+    server.shutdown()
+    t.join()
+
+
+@fixture
+def server_base_url(server: HTTPServer, server_thread) -> str:
+    host, port = server.server_address
+    return f"http://{cast(str, host)}:{port}"

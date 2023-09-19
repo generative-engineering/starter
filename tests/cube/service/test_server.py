@@ -1,13 +1,12 @@
 import logging
-from shutil import copyfile
+import shutil
+from pathlib import Path
 
-from generative.fabric.http.routers.v2.endpoints import operation_id_for, endpoint_path
-from pytest import mark
 from _pytest.logging import LogCaptureFixture
 from generative.fabric import FabricFunction
 from generative.fabric.definitions.function import fabric_function_class_from_function
 from generative.fabric.http.registry import get_subclasses
-
+from generative.fabric.http.routers.v2.endpoints import operation_id_for, endpoint_path
 from starlette.testclient import TestClient
 
 from cube.geometry import generate_cuboid_cad, Cuboid
@@ -42,21 +41,18 @@ def assert_no_warnings(caplog: LogCaptureFixture):
     assert not issues
 
 
-@mark.xfail(reason="Waiting for injectable HTTP clients FND-1620")
-def test_step_renderer_works(client: TestClient, assets_dir, caplog: LogCaptureFixture, step_file):
-    a_step_name = "test.step"
-    step_asset_file = assets_dir / a_step_name
-    copyfile(step_file, step_asset_file)
-    assert step_asset_file.exists()
-    assert client.get("http://testserver/assets/foo.step")
-    path = endpoint_path(fabric_function_class_from_function(step_renderer))
-
+def test_step_renderer_works(
+    client: TestClient, tmpdir, caplog: LogCaptureFixture, step_file: Path, server_base_url: str
+):
+    asset_path = Path(tmpdir) / step_file.name
+    shutil.copyfile(step_file, asset_path)
     # Run our FF
+    path = endpoint_path(fabric_function_class_from_function(step_renderer))
     with caplog.at_level(logging.INFO):
-        resp = client.post(path, json={"step_asset": f"http://testserver/assets/{a_step_name}"})
-    assert_no_warnings(caplog)
+        resp = client.post(path, json={"step_asset": f"{server_base_url}/{asset_path.name}"})
 
+    assert_no_warnings(caplog)
     assert resp.status_code == 200, resp.json()["detail"]
     outputs = resp.json()["data"]["outputs"]
     assert outputs, f"Got no outputs in {resp.json()}"
-    assert outputs.startswith("http://testserver/assets"), "doesn't look like an asset"
+    assert outputs.startswith("http://testserver/groups/LOCAL/"), "doesn't look like a local asset"
