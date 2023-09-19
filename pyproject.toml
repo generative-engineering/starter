@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "generative-starter-project"
-version = "0.6.0"
+version = "0.6.1"
 description = "Starter Project for Generative Fabric Functions"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
 packages = [
