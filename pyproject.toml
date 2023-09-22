@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "generative-starter-project"
-version = "0.6.1"
+version = "1.0.0"
 description = "Starter Project for Generative Fabric Functions"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
 packages = [
@@ -15,8 +15,6 @@ secondary = true
 [tool.poetry.dependencies]
 python = "^3.9"
 generative-fabric-definitions = "*"
-cadquery = "^2.3.1"
-cadquery-ocp = "7.7.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.4.1"
