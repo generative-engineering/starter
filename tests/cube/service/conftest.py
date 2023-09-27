@@ -1,6 +1,9 @@
 import functools
+import hashlib
+import re
 import tempfile
 from collections.abc import Iterable
+from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 from threading import Thread
@@ -8,9 +11,17 @@ from typing import Any, cast
 
 from fastapi import FastAPI
 from generative.fabric.http.app import create_app
-from pydantic_core._pydantic_core import Url
+from pydantic import AnyUrl
 from pytest import fixture
 from starlette.testclient import TestClient
+
+
+@fixture(scope="module")
+def version() -> str:
+    h = hashlib.sha1()
+    # Make it different always, just to check...
+    h.update(datetime.now().isoformat().encode("utf-8"))
+    return h.hexdigest()
 
 
 @fixture(scope="module")
@@ -28,8 +39,8 @@ def assets_dir() -> Path:
 
 
 @fixture(scope="module")
-def app(ensure_tests_imported, assets_dir: Path):
-    return create_app(assets_dir, Url("http://testserver"), dirs={Path("tests")})
+def app(ensure_tests_imported, version: str, assets_dir: Path):
+    return create_app(version, assets_dir, AnyUrl("http://testserver"), dirs={Path("tests")})
 
 
 @fixture(scope="module")
@@ -43,18 +54,26 @@ def openapi_path():
 
 
 @fixture(scope="module")
-def openapi_post_paths(client: TestClient, openapi_path: str) -> Iterable[dict[str, Any]]:
+def openapi_post_endpoints(client: TestClient, openapi_path: str) -> Iterable[dict[str, Any]]:
     resp = client.get(openapi_path)
     assert resp.status_code == 200
     endpoints = resp.json().get("paths", None)
 
     assert endpoints, f"No OpenAPI paths defined: {resp}"
-    return [operation["post"] for path, operation in endpoints.items() if "post" in operation]
+    return [
+        operation["post"]
+        for path, operation in endpoints.items()
+        if "post" in operation and "/v3/functions" in path
+    ]
 
 
 @fixture(scope="module")
-def openapi_post_endpoint_operation_ids(openapi_post_paths: Iterable[dict[str, Any]]) -> list[str]:
-    return [ff["operationId"] for ff in openapi_post_paths]
+def openapi_function_names(openapi_post_endpoints) -> list[str]:
+    return [_get_class_from_operation_id(ff["operationId"]) for ff in openapi_post_endpoints]
+
+
+def _get_class_from_operation_id(operation_id: str) -> str:
+    return re.sub(r"^(.*)\.[^.]+\.evaluate$", r"\1", operation_id)
 
 
 @fixture
