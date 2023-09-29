@@ -1,4 +1,5 @@
 import logging
+import re
 import shutil
 from pathlib import Path
 
@@ -57,6 +58,14 @@ def test_step_renderer_works(
 
     assert_no_warnings(caplog)
     assert resp.status_code == 200, resp.json()["detail"]
-    outputs = resp.json()["data"]["outputs"]
-    assert outputs, f"Got no outputs in {resp.json()}"
-    assert outputs.startswith("http://testserver/v3/groups/LOCAL/"), "not a local asset?"
+    asset_uri = resp.json()["data"]["outputs"]
+    assert asset_uri, f"Got no outputs in {resp.json()}"
+    assert asset_uri.startswith("g8e://assets/"), "not a Generative asset?"
+    url = assert_uri_to_api_path(asset_uri)
+    resp = client.get(url)
+    assert resp.status_code < 400, f"Failed getting URL {url}"
+    assert resp.json(), "was expecting some dummy JSON here"
+
+
+def assert_uri_to_api_path(asset_uri: str) -> str:
+    return re.sub(r"^g8e://assets/(\w+)/(.+)$", r"/v3/groups/\1/assets/\2", asset_uri)
