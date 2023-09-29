@@ -1,9 +1,7 @@
 import functools
-import hashlib
 import re
 import tempfile
 from collections.abc import Iterable
-from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 from threading import Thread
@@ -11,17 +9,13 @@ from typing import Any, cast
 
 from fastapi import FastAPI
 from generative.fabric.http.app import create_app
+from generative.fabric.http.dependencies import get_settings, Settings
 from pydantic import AnyUrl
 from pytest import fixture
 from starlette.testclient import TestClient
 
-
-@fixture(scope="module")
-def version() -> str:
-    h = hashlib.sha1()
-    # Make it different always, just to check...
-    h.update(datetime.now().isoformat().encode("utf-8"))
-    return h.hexdigest()
+TEST_BASE_URL = AnyUrl("http://testserver")
+"""Used by TestClient"""
 
 
 @fixture(scope="module")
@@ -39,8 +33,18 @@ def assets_dir() -> Path:
 
 
 @fixture(scope="module")
-def app(ensure_tests_imported, version: str, assets_dir: Path):
-    return create_app(version, assets_dir, AnyUrl("http://testserver"), dirs={Path("tests")})
+def version() -> str:
+    return "TESTING"
+
+
+@fixture(scope="module")
+def app(ensure_tests_imported, version: str, assets_dir: Path) -> FastAPI:
+    def get_custom_settings():
+        return Settings(base_url=TEST_BASE_URL, assets_dir=assets_dir)
+
+    app = create_app(version, assets_dir, TEST_BASE_URL, dirs={Path("tests")})
+    app.dependency_overrides[get_settings] = get_custom_settings
+    return app
 
 
 @fixture(scope="module")
