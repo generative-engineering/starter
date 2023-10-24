@@ -20,9 +20,6 @@ variables:
 
 before_script:
   - curl -sSL https://install.python-poetry.org | python3 - --version $POETRY_VERSION
-    # libgl1 is required for CADQuery
-  - apt-get update -q
-  - apt-get install -qy --no-install-recommends libgl1
   - export PATH="/root/.local/bin:$PATH"
   - poetry config -- http-basic.gitlab gitlab-ci-token "$CI_JOB_TOKEN"
   - poetry install --sync

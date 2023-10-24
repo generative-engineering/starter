@@ -7,7 +7,8 @@ Developing your own Fabric Functions
 - Create a new repository through terraform. Follow instructions in our [gitlab infrastructure repo](https://gitlab.com/generative/infra/gitlab-bootstrap).
 - Copy the contents of this repository to it. If you already have some functions to use, then copy them too.
     - Delete the `cube` example package (keeping the `utils.py` file if you want) once you're happy with how it works.
-     Update the package name and path in `pyproject.toml` and `gitlab-ci.yml` files.
+     Update the package name and path in `pyproject.toml` and `gitlab-ci.yml` files and remove any sections you don't need.
+    - Delete any files you don't need.
 - Create your new Fabric Functions following the usage guide in the [Fabric Guide](https://gitlab.com/generative/fabric/fabric-definitions/-/blob/main/docs/fabric_guide.md).
     - Use `pytest` for unit tests and also for end-to-end tests for benchmarking or storing examples.
     As shown in the [example](/tests/cube/test_end_to_end.py),
@@ -17,7 +18,7 @@ Developing your own Fabric Functions
 Setup
 -----
 
-- [ ] Follow our [poetry setup guide](https://generative.gitlab.io/team/documentation/technical/languages/python/python-setup.html#poetry).
+- Follow our [poetry setup guide](https://generative.gitlab.io/team/documentation/technical/languages/python/python-setup.html#poetry).
 - Run `poetry install` in the terminal to install all the relevant packages.
 - We use a basic Nix flake for this project:
   `nix develop` gives you a shell with the right version of Python and Poetry.
