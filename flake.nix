@@ -15,8 +15,8 @@
       in rec {
         devShell = pkgs.mkShell {
           packages = with pkgs; [
-            python39
-            (poetry.override {python3 = python39;})
+            python310
+            (poetry.override {python3 = python310;})
           ];
         };
         apps = {
