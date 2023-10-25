@@ -2,7 +2,6 @@
 
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 
 def timestamped_file_path(
@@ -24,7 +23,7 @@ def guaranteed_dir(p: Path) -> Path:
     return dir_
 
 
-def timestamp(prefix: Optional[str] = None) -> str:
+def timestamp(prefix: str | None = None) -> str:
     """
     Add a filepath-friendly timestamp to the end of a string.
     Useful to help distinguish files generated inside explorations in a human-readable way.
