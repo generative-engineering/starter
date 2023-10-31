@@ -9,7 +9,7 @@ from typing import Any, cast
 
 from fastapi import FastAPI
 from generative.fabric.http.app import create_app
-from generative.fabric.http.dependencies import get_settings, Settings
+from generative.fabric.http.dependencies import Settings
 from pydantic import AnyUrl
 from pytest import fixture
 from starlette.testclient import TestClient
@@ -28,8 +28,8 @@ def ensure_tests_imported():
 
 
 @fixture(scope="module")
-def assets_dir() -> Path:
-    return Path(tempfile.mkdtemp(prefix="assets-"))
+def data_dir() -> Path:
+    return Path(tempfile.mkdtemp(prefix="data-"))
 
 
 @fixture(scope="module")
@@ -38,13 +38,9 @@ def version() -> str:
 
 
 @fixture(scope="module")
-def app(ensure_tests_imported, version: str, assets_dir: Path) -> FastAPI:
-    def get_custom_settings():
-        return Settings(base_url=TEST_BASE_URL, assets_dir=assets_dir)
-
-    app = create_app(version, assets_dir, TEST_BASE_URL, dirs={Path("tests")})
-    app.dependency_overrides[get_settings] = get_custom_settings
-    return app
+def app(ensure_tests_imported, version: str, data_dir: Path) -> FastAPI:
+    settings = Settings(base_url=TEST_BASE_URL, data_dir=data_dir)
+    return create_app(version, settings, dirs={Path("tests")})
 
 
 @fixture(scope="module")

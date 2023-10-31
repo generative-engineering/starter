@@ -174,14 +174,14 @@ all = ["email-validator (>=2.0.0)", "httpx (>=0.23.0)", "itsdangerous (>=1.1.0)"
 
 [[package]]
 name = "generative-fabric-definitions"
-version = "17.0.0"
+version = "19.0.0"
 description = "A library to help create Generative Fabric components."
 category = "main"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 files = [
-    {file = "generative_fabric_definitions-17.0.0-py3-none-any.whl", hash = "sha256:34c4c98dc536ea0f6eee84bae2f4c554f6c9eeb2ca66496e007799201370d6d0"},
-    {file = "generative_fabric_definitions-17.0.0.tar.gz", hash = "sha256:5481b6c581dcdf2e4e2bc1fe8e81ec6c1bd687ceca512e1a146745a42b827039"},
+    {file = "generative_fabric_definitions-19.0.0-py3-none-any.whl", hash = "sha256:f201e1a00ccd3776df21c4dd7b71ccaea184385c537f63514e39db8b5836acf5"},
+    {file = "generative_fabric_definitions-19.0.0.tar.gz", hash = "sha256:be9fa7609a8c32efd54281b1631c6645765f593f661b4312fa6eac83565e3544"},
 ]
 
 [package.dependencies]
@@ -190,7 +190,7 @@ fastapi = ">=0.100.0,<0.101.0"
 httpx = {version = ">=0.25.0,<0.26.0", extras = ["http2"]}
 pydantic = ">=2.0.3,<3.0.0"
 pydantic-settings = ">=2.0.3,<3.0.0"
-pylibmagic = ">=0.4.0,<0.5.0"
+pylibmagic = ">=0.5.0,<0.6.0"
 python-magic = ">=0.4.27,<0.5.0"
 uvicorn = ">=0.22.0,<0.23.0"
 
@@ -604,57 +604,19 @@ python-dotenv = ">=0.21.0"
 
 [[package]]
 name = "pylibmagic"
-version = "0.4.0"
+version = "0.5.0"
 description = "scikit-build project with CMake for compiling libmagic"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pylibmagic-0.4.0-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:850ffef266e0f4ebb077bf80ae735aa56ab66dcc2d454b2c6a7d20aca9a2473d"},
-    {file = "pylibmagic-0.4.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:721884d25031ca8dda3fd0fab440960ecdcdfc8d4ca0afbbc3053ce62f2f9150"},
-    {file = "pylibmagic-0.4.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:a0b41bafb8192ff44e1daeb02724f73f8cbf52a888d6222292b43c18628c1f86"},
-    {file = "pylibmagic-0.4.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a10c9b762d1dac8f551b872bebb7ca161b57078860aea334cc380941e7500127"},
-    {file = "pylibmagic-0.4.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d603546d4ccb9f6d6397f25851313648585a6531a81cf7281378309f9ade63f1"},
-    {file = "pylibmagic-0.4.0-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:9bd060a6cc31db7c448c58117a024a244f2c48fcabca131af371cf5e87397507"},
-    {file = "pylibmagic-0.4.0-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:829e1264c71426f3a0b36a651511dd21d21ff433214a5ee41716e3d2cb8cc450"},
-    {file = "pylibmagic-0.4.0-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:1dfcf202bfa1d33b3a1aa26bc5240c5bec64a2ee391ae9caddf65afbdf591607"},
-    {file = "pylibmagic-0.4.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:8d0a3db438aa26367f9ddad12c4aeff0af97517351bfc48dc20939bdf5b38094"},
-    {file = "pylibmagic-0.4.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:d2ee63fe05d65bed38dc27a761240812c7482c2aae57e15547e9a12c9f4ededd"},
-    {file = "pylibmagic-0.4.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:168bf4f0b2a1513e18e2f22f033a577a7806c5ba12fb61172e4b64537cd8fa89"},
-    {file = "pylibmagic-0.4.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:cd4109f508d681cb797a7157637d11cbae64e87088a9c741b800ba2d7d89e19e"},
-    {file = "pylibmagic-0.4.0-cp311-cp311-musllinux_1_1_aarch64.whl", hash = "sha256:00906d6876dea3c27f81b92559b08a3d129e368594b32b36973fd90f1127164d"},
-    {file = "pylibmagic-0.4.0-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:fad58b5bb23549b4525c913e05566178cd4ca79659ca9630cd9dfbecab0a7a63"},
-    {file = "pylibmagic-0.4.0-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:7074d5ebc3baad33aef742329e2aea0923a031a7f656b16d29ac654394264a33"},
-    {file = "pylibmagic-0.4.0-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c7c437eb6b1d8c0900c1a7eb4f33f92231c5ba2a013f6f870c82821757fd603f"},
-    {file = "pylibmagic-0.4.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0f3d3bfd35b96e0889bd4d518c6604d5d59a7b92d3896e70606cd9deb8f98679"},
-    {file = "pylibmagic-0.4.0-cp37-cp37m-musllinux_1_1_aarch64.whl", hash = "sha256:89eb7d9b3889beb9aeda951e5a8d440452911a3991f356c82cff5e1e7195dd8e"},
-    {file = "pylibmagic-0.4.0-cp37-cp37m-musllinux_1_1_x86_64.whl", hash = "sha256:015c4f80974d69eca1f1ff060375ca2d982b163bb06b2f41dd979869f21e4787"},
-    {file = "pylibmagic-0.4.0-cp38-cp38-macosx_10_9_universal2.whl", hash = "sha256:06fbe9d45bfbdb6f332e3b8bf39fa3b63c8bb19cca577714dc3c55d868e9ea00"},
-    {file = "pylibmagic-0.4.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:bcd7c417ad48a1e61496857292d8563e33beae314ab08ddf82acaa1a94648c48"},
-    {file = "pylibmagic-0.4.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:75a9a715d4f9033a2bc7323856946eb1a55883a40afd7c1d2e840733b6fc12fa"},
-    {file = "pylibmagic-0.4.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:71f7fd7412e03f9a24051661ff0e29387aa8753de30a8b3a9cc043aa1dc89cf6"},
-    {file = "pylibmagic-0.4.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:945f0c63f8c618e6b101a5147afea445cf3051bd293ec42a34084000ad3c5e30"},
-    {file = "pylibmagic-0.4.0-cp38-cp38-musllinux_1_1_aarch64.whl", hash = "sha256:74c5769bf9bcd0026084ff6bc93293fb2f5539511aaf9cbfe8f543d7f4c1cc86"},
-    {file = "pylibmagic-0.4.0-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:01c5727817215b2305c198066d6436216786d4952a6dcfdf0427b628e72a421d"},
-    {file = "pylibmagic-0.4.0-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:7402411626e9ef72b935dd53dcf0d297514b5d42282dcc6a72711d1d3f328107"},
-    {file = "pylibmagic-0.4.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:6380f06ee96396c2aa9e43144ba529d395fdc9079d596c97a73789d035a6a642"},
-    {file = "pylibmagic-0.4.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:a16198d3ff99aa70817f411eb596e30ecf27b65e0827f3bf581291f3ced1f33b"},
-    {file = "pylibmagic-0.4.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a9c66a8acc14b14b593ab66dccfb2eed41d79cbc04d043634efe9cdb9b74bd21"},
-    {file = "pylibmagic-0.4.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:023d0ad105b4fb457d5e9397b434993fd64905e08fc494363f3a63c3a9bec398"},
-    {file = "pylibmagic-0.4.0-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:3e4621fe65b219279defcef9c239da8fb6650c1d7f42acbcca6da14deb3504d7"},
-    {file = "pylibmagic-0.4.0-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:da8a209d99900f2e202e2f7049b53d9d5764464f0598b1464eb1d4e2163bcf3a"},
-    {file = "pylibmagic-0.4.0-pp37-pypy37_pp73-macosx_10_9_x86_64.whl", hash = "sha256:e8d095e055a2db7cc228ff9de7cba3bc40d3e0f432f9806987afa28098ffd256"},
-    {file = "pylibmagic-0.4.0-pp37-pypy37_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:729e8aeb9b77db311a9c5319747ada780099b0276e46d725fe4582516a8d865e"},
-    {file = "pylibmagic-0.4.0-pp37-pypy37_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c86b92cef79fa7061015cedc54ce480d83dbae4ca1ba2d3c179de48d7d5589f7"},
-    {file = "pylibmagic-0.4.0-pp38-pypy38_pp73-macosx_10_9_x86_64.whl", hash = "sha256:ab1eb02d4004fb12b18c02ba472a4e70c731b8b1ec9b9942f9ff3121cf3fea42"},
-    {file = "pylibmagic-0.4.0-pp38-pypy38_pp73-macosx_11_0_arm64.whl", hash = "sha256:ed9648424778ff90565a996e5ec8aa39be9106495fdeded4dc1041f7c8f27299"},
-    {file = "pylibmagic-0.4.0-pp38-pypy38_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c5a27f46d9fb61c613192b2d80302248eb722133463f61b05c75588e7da34ad2"},
-    {file = "pylibmagic-0.4.0-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:41fb7e70c1e56737a32b34d64fb7d723224f4a6fc342feb36cee9bd9e94f9204"},
-    {file = "pylibmagic-0.4.0-pp39-pypy39_pp73-macosx_10_9_x86_64.whl", hash = "sha256:7a69103a6ab26eb62d54c32a8155b6ae918742e6ce95a7293bf8ed66ef20e301"},
-    {file = "pylibmagic-0.4.0-pp39-pypy39_pp73-macosx_11_0_arm64.whl", hash = "sha256:faa26e1bd4ed93ba1b1483b773d2b577bddda0d8f022b67c1fba3a75b0ac5d52"},
-    {file = "pylibmagic-0.4.0-pp39-pypy39_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:44b25360f5ba40f54471669209c7c225309b19effe3ec3a8699385ecd4de501b"},
-    {file = "pylibmagic-0.4.0-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:adf823bedd3853136be2bd7f185c5aaf2846daea8154f2db44cf8fc7953e23ca"},
-    {file = "pylibmagic-0.4.0.tar.gz", hash = "sha256:bb809935409c63ca1d94f9b4b519e28907b13b14c5426f00a02ae26cda434683"},
+    {file = "pylibmagic-0.5.0-py3-none-macosx_10_9_x86_64.whl", hash = "sha256:6e4aed7e50e7be87c33d7616393ec605be494388576efe3baa300da1d4c99703"},
+    {file = "pylibmagic-0.5.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:f403cf26e530fa45bcb260fed80f1cecc2df777f2d0239078a234b4f2f97dbf7"},
+    {file = "pylibmagic-0.5.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e8614c1e9d7bb0c6b6989646e385a514acb111fed9ec64f50aaf0e21dcf7b7bb"},
+    {file = "pylibmagic-0.5.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:24b5bb791d42653d2668913c7b9a789b5458a2fff09d0ec3c8af33a1204eea6a"},
+    {file = "pylibmagic-0.5.0-py3-none-musllinux_1_1_aarch64.whl", hash = "sha256:10efe9403e45f3c9f379800991fb5f73c0f0fc80db4ec79b5e6db4d0a437a253"},
+    {file = "pylibmagic-0.5.0-py3-none-musllinux_1_1_x86_64.whl", hash = "sha256:948e94de523211c01a8dc1eee235e3433bdc96a39d7ecf8039b814386c27b832"},
+    {file = "pylibmagic-0.5.0.tar.gz", hash = "sha256:942f4f194994f09021f6a4e6e6477ceeb28e4e92dc268fda10d96fa45c8c9ec4"},
 ]
 
 [package.extras]
