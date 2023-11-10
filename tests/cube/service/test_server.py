@@ -5,7 +5,10 @@ from pathlib import Path
 
 from _pytest.logging import LogCaptureFixture
 from generative.fabric import FabricFunction
-from generative.fabric.definitions.function import fabric_function_class_from_function
+from generative.fabric.definitions.function import (
+    fabric_function_class_from_function,
+    FunctionVersion,
+)
 from generative.fabric.http.registry import get_subclasses
 from generative.fabric.http.routers.v3.functions import endpoint_path
 from starlette.testclient import TestClient
@@ -23,7 +26,7 @@ def test_cube_ffs_all_exposed(openapi_function_names):
 
 
 def test_generate_cuboid_cad_works(
-    client: TestClient, version: str, caplog: LogCaptureFixture, a_cuboid: Cuboid
+    client: TestClient, version: FunctionVersion, caplog: LogCaptureFixture, a_cuboid: Cuboid
 ):
     with caplog.at_level(logging.INFO):
         path = endpoint_path(fabric_function_class_from_function(generate_cuboid_cad), version)
@@ -43,7 +46,7 @@ def assert_no_warnings(caplog: LogCaptureFixture):
 
 def test_step_renderer_works(
     client: TestClient,
-    version: str,
+    version: FunctionVersion,
     tmpdir,
     caplog: LogCaptureFixture,
     step_file: Path,

@@ -1,14 +1,13 @@
+# OSes
 *.swp
 .DS_Store
+~*
 
-#Python
+# Python
 .venv
 .coverage
 *__pycache__*
 
-# Generative
-output
-/assets
 
 # IDEs
 .idea
@@ -17,3 +16,8 @@ output
 
 # Direnv
 .direnv
+
+# Generative
+output
+/assets
+/data

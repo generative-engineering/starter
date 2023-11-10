@@ -8,6 +8,7 @@ from threading import Thread
 from typing import Any, cast
 
 from fastapi import FastAPI
+from generative.fabric.definitions.function import FunctionVersion
 from generative.fabric.http.app import create_app
 from generative.fabric.http.dependencies import Settings
 from pydantic import AnyUrl
@@ -34,11 +35,11 @@ def data_dir() -> Path:
 
 @fixture(scope="module")
 def version() -> str:
-    return "TESTING"
+    return FunctionVersion("TESTING")
 
 
 @fixture(scope="module")
-def app(ensure_tests_imported, version: str, data_dir: Path) -> FastAPI:
+def app(ensure_tests_imported, version: FunctionVersion, data_dir: Path) -> FastAPI:
     settings = Settings(base_url=TEST_BASE_URL, data_dir=data_dir)
     return create_app(version, settings, dirs={Path("tests")})
 

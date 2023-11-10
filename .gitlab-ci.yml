@@ -21,7 +21,7 @@ variables:
 before_script:
   - curl -sSL https://install.python-poetry.org | python3 - --version $POETRY_VERSION
   - export PATH="/root/.local/bin:$PATH"
-  - poetry config -- http-basic.gitlab gitlab-ci-token "$CI_JOB_TOKEN"
+  - poetry config -- http-basic.generative-gitlab gitlab-ci-token "$CI_JOB_TOKEN"
   - poetry install --sync
 
 
@@ -61,7 +61,7 @@ test-in-nix-shell:
     - echo "machine gitlab.com login $GITLAB_USER password $CI_JOB_TOKEN" >> "$NETRC"
   script:
     # First build uses all netrc config, so we can access private repos.
-    - $NIX_CMD run --quiet --impure --extra-sandbox-paths $NETRC -I NETRC="$NETRC" .#poetry config -- http-basic.gitlab gitlab-ci-token "$CI_JOB_TOKEN"
+    - $NIX_CMD run --quiet --impure --extra-sandbox-paths $NETRC -I NETRC="$NETRC" .#poetry config -- http-basic.generative-gitlab gitlab-ci-token "$CI_JOB_TOKEN"
     - $NIX_CMD run --quiet .#poetry install
     # Run all the tests
     - $NIX_CMD develop --quiet --command poetry run pytest
