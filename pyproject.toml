@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "generative-starter-project"
-version = "2.0.0"
+version = "2.1.0"
 description = "Starter Project for Generative Fabric Functions"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
 packages = [
@@ -8,13 +8,13 @@ packages = [
 ]
 
 [[tool.poetry.source]]
-name = "gitlab"
+name = "generative-gitlab"
 url = "https://gitlab.com/api/v4/groups/14110432/-/packages/pypi/simple"
 secondary = true
 
 [tool.poetry.dependencies]
 python = "^3.10"
-generative-fabric-definitions = "*"
+generative-fabric-definitions = { version = "*", source = "generative-gitlab" }
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.4.1"

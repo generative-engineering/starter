@@ -174,14 +174,14 @@ all = ["email-validator (>=2.0.0)", "httpx (>=0.23.0)", "itsdangerous (>=1.1.0)"
 
 [[package]]
 name = "generative-fabric-definitions"
-version = "19.0.0"
+version = "20.2.0"
 description = "A library to help create Generative Fabric components."
 category = "main"
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "generative_fabric_definitions-19.0.0-py3-none-any.whl", hash = "sha256:f201e1a00ccd3776df21c4dd7b71ccaea184385c537f63514e39db8b5836acf5"},
-    {file = "generative_fabric_definitions-19.0.0.tar.gz", hash = "sha256:be9fa7609a8c32efd54281b1631c6645765f593f661b4312fa6eac83565e3544"},
+    {file = "generative_fabric_definitions-20.2.0-py3-none-any.whl", hash = "sha256:fbaf1d64738d085490370ecaa6f07645f027c5e63040adb57fe58f8c0288bac9"},
+    {file = "generative_fabric_definitions-20.2.0.tar.gz", hash = "sha256:84ab9b80cae11e4a2e63d045a295c217d60e2941415644130a9ea255ef8949da"},
 ]
 
 [package.dependencies]
@@ -197,7 +197,7 @@ uvicorn = ">=0.22.0,<0.23.0"
 [package.source]
 type = "legacy"
 url = "https://gitlab.com/api/v4/groups/14110432/-/packages/pypi/simple"
-reference = "gitlab"
+reference = "generative-gitlab"
 
 [[package]]
 name = "h11"
@@ -808,4 +808,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "f1adfaaded6d9166065a3745d061a13f31f78f9cc90e2f24b9fe1709f8b75312"
+content-hash = "31730552d9ac323e6c1ce8d2f175557a4235483fada8db214f23b49c2845ae78"
