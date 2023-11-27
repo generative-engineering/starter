@@ -1,13 +1,11 @@
 from pathlib import Path
 
-from generative.fabric import TestingAsset
+from generative.fabric import FileAsset
 
-from tests.assets import download_asset
-from cube.renderer import (
-    step_renderer,
-)
+from cube.renderer import step_renderer
 
 
-async def test_cuboid_renderer(step_file: Path):
-    outputs = await step_renderer(TestingAsset(step_file))
-    assert (await download_asset(outputs)).exists()
+def test_cuboid_renderer(step_file: Path):
+    in_asset = FileAsset(step_file)
+    out_asset = step_renderer(in_asset)
+    assert (out_asset.download()).exists()
