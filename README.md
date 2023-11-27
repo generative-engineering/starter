@@ -47,3 +47,10 @@ Use the script (via Poetry):
 ```shell
 poetry run bin/lint.sh
 ```
+
+### Using an unreleased version of fabric-definitions
+```shell
+# Update for your local directory setup
+poetry remove generative-fabric-definitions
+poetry add --editable ../../fabric/fabric-definitions
+```

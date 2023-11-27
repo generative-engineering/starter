@@ -174,14 +174,14 @@ all = ["email-validator (>=2.0.0)", "httpx (>=0.23.0)", "itsdangerous (>=1.1.0)"
 
 [[package]]
 name = "generative-fabric-definitions"
-version = "20.2.0"
+version = "22.0.0"
 description = "A library to help create Generative Fabric components."
 category = "main"
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "generative_fabric_definitions-20.2.0-py3-none-any.whl", hash = "sha256:fbaf1d64738d085490370ecaa6f07645f027c5e63040adb57fe58f8c0288bac9"},
-    {file = "generative_fabric_definitions-20.2.0.tar.gz", hash = "sha256:84ab9b80cae11e4a2e63d045a295c217d60e2941415644130a9ea255ef8949da"},
+    {file = "generative_fabric_definitions-22.0.0-py3-none-any.whl", hash = "sha256:2fa601b12765a818de9d0d745ccf60ac0300927607350d02bea62926b7c7e6ee"},
+    {file = "generative_fabric_definitions-22.0.0.tar.gz", hash = "sha256:77baa893b5af6fd66ef0e4847e6ee2d60e707f8e52f8625654f67cd7eec599f8"},
 ]
 
 [package.dependencies]
@@ -660,25 +660,6 @@ tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
 testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
 [[package]]
-name = "pytest-asyncio"
-version = "0.21.1"
-description = "Pytest support for asyncio"
-category = "dev"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "pytest-asyncio-0.21.1.tar.gz", hash = "sha256:40a7eae6dded22c7b604986855ea48400ab15b069ae38116e8c01238e9eeb64d"},
-    {file = "pytest_asyncio-0.21.1-py3-none-any.whl", hash = "sha256:8666c1c8ac02631d7c51ba282e0c69a8a452b211ffedf2599099845da5c5c37b"},
-]
-
-[package.dependencies]
-pytest = ">=7.0.0"
-
-[package.extras]
-docs = ["sphinx (>=5.3)", "sphinx-rtd-theme (>=1.0)"]
-testing = ["coverage (>=6.2)", "flaky (>=3.5.0)", "hypothesis (>=5.7.1)", "mypy (>=0.931)", "pytest-trio (>=0.7.0)"]
-
-[[package]]
 name = "python-dotenv"
 version = "1.0.0"
 description = "Read key-value pairs from a .env file and set them as environment variables"
@@ -808,4 +789,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "31730552d9ac323e6c1ce8d2f175557a4235483fada8db214f23b49c2845ae78"
+content-hash = "c900c64d60423dd03b2af30ba0e216073f12d8297311b57c1e4eeadf573495ce"
