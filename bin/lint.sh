@@ -17,13 +17,14 @@ fatal() {
   exit 2
 }
 
+# Configure Ruff options
 args="$*"
-opts=""
-ruffOpts="--fix --show-fixes"
+formatOpts=""
+lintOpts="--fix --show-fixes"
 if [ "$args" = "--check" ] ; then
   printf "${GREY}%s${NO_COLOUR}\n" "Running check only"
-  opts="--check"
-  ruffOpts=""
+  formatOpts="--check"
+  lintOpts=""
 elif [ -n "$args" ]; then
   fatal "Don't understand args '$args'. Try --check"
 fi
@@ -48,7 +49,6 @@ run() {
 
 # Run all the linting in a sensible order
 run "Poetry checks" poetry check
-run "Ruff" ruff $ruffOpts src tests
-# Run after ruff, to reformat
-run "Black" black $opts .
+run "Ruff format" ruff format $formatOpts src tests
+run "Ruff lint" ruff $lintOpts src tests
 run "MyPy" mypy
