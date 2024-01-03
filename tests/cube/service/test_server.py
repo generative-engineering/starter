@@ -10,11 +10,13 @@ from generative.fabric.definitions.function import (
     FunctionVersion,
 )
 from generative.fabric.http.registry import get_subclasses
-from generative.fabric.http.routers.v3.functions import endpoint_path
+from generative.fabric.http.routers.functions.v4.dynamic import endpoint_path
 from starlette.testclient import TestClient
 
 from cube.geometry import generate_cuboid_cad, Cuboid
 from cube.renderer import step_renderer
+
+from tests.cube.service import ASSETS_API_VERSION
 
 
 def test_cube_ffs_all_exposed(openapi_function_names):
@@ -71,4 +73,6 @@ def test_step_renderer_works(
 
 
 def assert_uri_to_api_path(asset_uri: str) -> str:
-    return re.sub(r"^g8e://assets/(\w+)/(.+)$", r"/v3/groups/\1/assets/\2", asset_uri)
+    return re.sub(
+        r"^g8e://assets/(\w+)/(.+)$", rf"/{ASSETS_API_VERSION}/groups/\1/assets/\2", asset_uri
+    )
