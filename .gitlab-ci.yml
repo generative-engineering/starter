@@ -14,9 +14,9 @@ workflow:
     - if: $CI_COMMIT_BRANCH
 
 variables:
-  POETRY_VERSION: 1.4.2
+  POETRY_VERSION: 1.7.1
   POETRY_VIRTUALENVS_IN_PROJECT: "true"
-  NIX_IMAGE: "registry.gitlab.com/generative/infra/base-images/nixos:2023.07.21.13.53"
+  NIX_IMAGE: "registry.gitlab.com/generative/infra/base-images/nixos:2023.12.05.14.13"
 
 before_script:
   - curl -sSL https://install.python-poetry.org | python3 - --version $POETRY_VERSION
