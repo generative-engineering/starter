@@ -15,6 +15,8 @@ from pydantic import AnyUrl
 from pytest import fixture
 from starlette.testclient import TestClient
 
+from tests.cube.service import FUNCTIONS_API_VERSION
+
 TEST_BASE_URL = AnyUrl("http://testserver")
 """Used by TestClient"""
 
@@ -64,7 +66,7 @@ def openapi_post_endpoints(client: TestClient, openapi_path: str) -> Iterable[di
     return [
         operation["post"]
         for path, operation in endpoints.items()
-        if "post" in operation and "/v3/functions" in path
+        if "post" in operation and f"/{FUNCTIONS_API_VERSION}/functions" in path
     ]
 
 
