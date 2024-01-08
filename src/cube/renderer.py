@@ -2,7 +2,6 @@ from pathlib import Path
 
 from generative.fabric import fabric_function, FileAsset, Asset
 
-from cube.utils import timestamped_file_path
 import json
 
 
@@ -13,7 +12,7 @@ def dummy_convert(src: Path) -> Asset:
         "geometry": "cuboid",
         "src": str(src),
     }
-    asset = FileAsset(timestamped_file_path("json"))
+    asset = FileAsset(extension="json")
     with asset.open("w") as f:
         json.dump(report, f)
 
