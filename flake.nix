@@ -15,14 +15,13 @@
         ourPython = pkgs.python310;
         ourPoetry = pkgs.poetry.override {python3 = ourPython;};
       in rec {
-        devShell = pkgs.mkShell {
+        devShells.default = pkgs.mkShell {
+          # Some Python deps need these available to install
+          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [pkgs.stdenv.cc.cc];
           packages = [
             ourPython
             ourPoetry
           ];
-        };
-        apps = {
-          poetry = flake-utils.lib.mkApp {drv = ourPoetry;};
         };
         formatter = pkgs.alejandra;
       });
