@@ -49,6 +49,6 @@ run() {
 
 # Run all the linting in a sensible order
 run "Poetry checks" poetry check
-run "Ruff format" ruff format $formatOpts src tests
-run "Ruff lint" ruff $lintOpts src tests
+run "Ruff format" ruff format "$formatOpts" src tests
+run "Ruff lint" ruff check "$lintOpts" src tests
 run "MyPy" mypy

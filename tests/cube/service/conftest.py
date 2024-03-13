@@ -10,7 +10,7 @@ from typing import Any, cast
 from fastapi import FastAPI
 from generative.fabric.definitions.function import FunctionVersion
 from generative.fabric.http.app import create_app
-from generative.fabric.http.dependencies import Settings
+from generative.fabric.http.config import Settings
 from pydantic import AnyUrl
 from pytest import fixture
 from starlette.testclient import TestClient
@@ -42,7 +42,7 @@ def version() -> str:
 
 @fixture(scope="module")
 def app(ensure_tests_imported, version: FunctionVersion, data_dir: Path) -> FastAPI:
-    settings = Settings(base_url=TEST_BASE_URL, data_dir=data_dir)
+    settings = Settings(assets_base_url=TEST_BASE_URL, data_dir=data_dir)
     return create_app(version, settings, dirs={Path("tests")})
 
 
