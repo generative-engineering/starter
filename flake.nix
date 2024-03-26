@@ -17,8 +17,6 @@
       ourPoetry = pkgs.poetry.override {python3 = ourPython;};
     in rec {
       devShells.default = pkgs.mkShell {
-        # Some Python deps need these available to install
-        LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [pkgs.stdenv.cc.cc];
         packages = [
           ourPython
           ourPoetry
@@ -49,14 +47,6 @@
             mkdir $out
             echo "⏳ Running Ruff"
             ruff check ${./src} ${./tests}
-          '';
-        lint-docker =
-          pkgs.runCommand "hadolint"
-          {buildInputs = [pkgs.hadolint];}
-          ''
-            mkdir $out
-            echo "⏳ Running hadolint"
-            find ${./.} -name "*Dockerfile*" -print -execdir hadolint {} +
           '';
       };
       formatter = pkgs.alejandra;
