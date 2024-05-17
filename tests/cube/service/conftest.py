@@ -42,7 +42,7 @@ def version() -> str:
 
 @fixture(scope="module")
 def app(ensure_tests_imported, version: FunctionVersion, data_dir: Path) -> FastAPI:
-    settings = Settings(assets_public_base_url=TEST_BASE_URL, data_dir=data_dir)
+    settings = Settings(data_dir=data_dir)  # type: ignore
     return create_app(version, settings, dirs={Path("tests")})
 
 
@@ -76,7 +76,8 @@ def openapi_function_names(openapi_post_endpoints) -> list[str]:
 
 
 def _get_class_from_operation_id(operation_id: str) -> str:
-    return re.sub(r"^v5.(.*)\.[^.]+\.evaluate$", r"\1", operation_id)
+    # Strips version number off here too
+    return re.sub(r"^v\d+\.(.*)\.[^.]+\.evaluate$", r"\1", operation_id)
 
 
 @fixture
