@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "generative-starter-project"
-version = "3.2.1"
+version = "3.2.2"
 description = "Starter Project for Generative Fabric Functions"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
 packages = [{ include = "cube", from = "src" }]
