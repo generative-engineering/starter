@@ -1,0 +1,10 @@
+{
+    $schema: "https://docs.renovatebot.com/renovate-schema.json",
+    extends: [
+        "config:recommended"
+    ],
+    // See https://docs.renovatebot.com/configuration-options/#rangestrategy
+    rangeStrategy: "in-range-only",
+    bumpVersion: "patch",
+    labels: ["bot"]
+}

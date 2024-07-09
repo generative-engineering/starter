@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "generative-starter-project"
-version = "3.2.0"
+version = "3.2.1"
 description = "Starter Project for Generative Fabric Functions"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
 packages = [{ include = "cube", from = "src" }]
@@ -15,9 +15,9 @@ python = "^3.11"
 generative-fabric-definitions = { version = "*", source = "generative-gitlab", extras = ["local"] }
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.9.0"
-pytest = "^8.1.1"
-ruff = "^0.3.2"
+mypy = "^1"
+pytest = "^8"
+ruff = "^0.5"
 
 [tool.poetry.scripts]
 server = 'generative.fabric.http.__main__:main'
