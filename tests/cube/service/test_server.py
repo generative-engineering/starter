@@ -10,7 +10,7 @@ from generative.fabric.definitions.function import (
     FunctionVersion,
 )
 from generative.fabric.http.registry import get_subclasses
-from generative.fabric.http.routers.functions.v5 import endpoint_path
+from generative.fabric.http.routers.functions.v5.evaluate import endpoint_path
 from starlette.testclient import TestClient
 
 from cube.geometry import generate_cuboid_cad, Cuboid
