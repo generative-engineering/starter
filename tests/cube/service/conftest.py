@@ -37,13 +37,14 @@ def data_dir() -> Path:
 
 @fixture(scope="module")
 def version() -> str:
-    return FunctionVersion("TESTING")
+    # this can be any arbitrary Multihash-multibase-encoded version
+    return FunctionVersion("~bciqgyp5ukq")
 
 
 @fixture(scope="module")
 def app(ensure_tests_imported, version: FunctionVersion, data_dir: Path) -> FastAPI:
-    settings = Settings(data_dir=data_dir)  # type: ignore
-    return create_app(version, settings, dirs={Path("tests")})
+    settings = Settings(data_dir=data_dir, functions_version=version)  # type: ignore
+    return create_app(settings, dirs={Path("tests")})
 
 
 @fixture(scope="module")
