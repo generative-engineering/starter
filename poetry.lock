@@ -106,13 +106,13 @@ all = ["email_validator (>=2.0.0)", "httpx (>=0.23.0)", "itsdangerous (>=1.1.0)"
 
 [[package]]
 name = "generative-fabric-definitions"
-version = "33.2.0"
+version = "34.0.0"
 description = "A library to help create Generative Fabric components."
 optional = false
 python-versions = ">=3.10,<4.0.0"
 files = [
-    {file = "generative_fabric_definitions-33.2.0-py3-none-any.whl", hash = "sha256:8aa03c1c8f73b758f267ebda1279f669e72d47762325f7b6832977ee623cc945"},
-    {file = "generative_fabric_definitions-33.2.0.tar.gz", hash = "sha256:f1b18306b01210524c36002690a7c58b747f969bc9df970702f9a13b2b48bf8f"},
+    {file = "generative_fabric_definitions-34.0.0-py3-none-any.whl", hash = "sha256:1f3f06f6fcd4de4a90289092eb1ec59c61c1fba1cc99ea5e0c42d79e58c2a33e"},
+    {file = "generative_fabric_definitions-34.0.0.tar.gz", hash = "sha256:2e626ca282a40e29b7512a57b7debdd165c79244b170fad5e71e8d7a91097fdb"},
 ]
 
 [package.dependencies]
@@ -672,4 +672,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "0b5b77672b1711b1b8ead7d1491d2774680b0b545a128191a47ec5200a0ef298"
+content-hash = "2405b35f9ba77b38082392cb302277971515435607e2bda96cffa4cdd6feaadf"
