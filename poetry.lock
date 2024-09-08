@@ -87,44 +87,45 @@ gmpy2 = ["gmpy2"]
 
 [[package]]
 name = "fastapi"
-version = "0.110.3"
+version = "0.113.0"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "fastapi-0.110.3-py3-none-any.whl", hash = "sha256:fd7600612f755e4050beb74001310b5a7e1796d149c2ee363124abdfa0289d32"},
-    {file = "fastapi-0.110.3.tar.gz", hash = "sha256:555700b0159379e94fdbfc6bb66a0f1c43f4cf7060f25239af3d84b63a656626"},
+    {file = "fastapi-0.113.0-py3-none-any.whl", hash = "sha256:c8d364485b6361fb643d53920a18d58a696e189abcb901ec03b487e35774c476"},
+    {file = "fastapi-0.113.0.tar.gz", hash = "sha256:b7cf9684dc154dfc93f8b718e5850577b529889096518df44defa41e73caf50f"},
 ]
 
 [package.dependencies]
 pydantic = ">=1.7.4,<1.8 || >1.8,<1.8.1 || >1.8.1,<2.0.0 || >2.0.0,<2.0.1 || >2.0.1,<2.1.0 || >2.1.0,<3.0.0"
-starlette = ">=0.37.2,<0.38.0"
+starlette = ">=0.37.2,<0.39.0"
 typing-extensions = ">=4.8.0"
 
 [package.extras]
-all = ["email_validator (>=2.0.0)", "httpx (>=0.23.0)", "itsdangerous (>=1.1.0)", "jinja2 (>=2.11.2)", "orjson (>=3.2.1)", "pydantic-extra-types (>=2.0.0)", "pydantic-settings (>=2.0.0)", "python-multipart (>=0.0.7)", "pyyaml (>=5.3.1)", "ujson (>=4.0.1,!=4.0.2,!=4.1.0,!=4.2.0,!=4.3.0,!=5.0.0,!=5.1.0)", "uvicorn[standard] (>=0.12.0)"]
+all = ["email-validator (>=2.0.0)", "fastapi-cli[standard] (>=0.0.5)", "httpx (>=0.23.0)", "itsdangerous (>=1.1.0)", "jinja2 (>=2.11.2)", "orjson (>=3.2.1)", "pydantic-extra-types (>=2.0.0)", "pydantic-settings (>=2.0.0)", "python-multipart (>=0.0.7)", "pyyaml (>=5.3.1)", "ujson (>=4.0.1,!=4.0.2,!=4.1.0,!=4.2.0,!=4.3.0,!=5.0.0,!=5.1.0)", "uvicorn[standard] (>=0.12.0)"]
+standard = ["email-validator (>=2.0.0)", "fastapi-cli[standard] (>=0.0.5)", "httpx (>=0.23.0)", "jinja2 (>=2.11.2)", "python-multipart (>=0.0.7)", "uvicorn[standard] (>=0.12.0)"]
 
 [[package]]
 name = "generative-fabric-definitions"
-version = "34.0.0"
+version = "34.0.2"
 description = "A library to help create Generative Fabric components."
 optional = false
 python-versions = ">=3.10,<4.0.0"
 files = [
-    {file = "generative_fabric_definitions-34.0.0-py3-none-any.whl", hash = "sha256:1f3f06f6fcd4de4a90289092eb1ec59c61c1fba1cc99ea5e0c42d79e58c2a33e"},
-    {file = "generative_fabric_definitions-34.0.0.tar.gz", hash = "sha256:2e626ca282a40e29b7512a57b7debdd165c79244b170fad5e71e8d7a91097fdb"},
+    {file = "generative_fabric_definitions-34.0.2-py3-none-any.whl", hash = "sha256:e5868b351935026a8fa362b2f498999a91b380f59a28d78a5ca8c2d4d4f339f8"},
+    {file = "generative_fabric_definitions-34.0.2.tar.gz", hash = "sha256:c8718f6a8cc7578bf5bc19c7881e78231240bc226959642a57b88b11305cd68b"},
 ]
 
 [package.dependencies]
-fastapi = ">=0.110.2,<0.111.0"
+fastapi = ">=0.113.0,<0.114.0"
 httpx = {version = ">=0.27.0,<0.28.0", extras = ["http2"]}
-pydantic = ">=2.0.3,<3.0.0"
-pydantic-settings = ">=2.0.3,<3.0.0"
+pydantic = ">=2.0,<3.0"
+pydantic-settings = ">=2.0,<3.0"
 pylibmagic = {version = ">=0.5.0,<0.6.0", optional = true, markers = "sys_platform != \"win32\" and extra == \"local\""}
 python-jose = ">=3.3.0,<4.0.0"
 python-magic = {version = ">=0.4.27,<0.5.0", optional = true, markers = "sys_platform != \"win32\" and extra == \"local\""}
-types-python-jose = ">=3.3.4.8,<4.0.0.0"
-uvicorn = ">=0.27.1,<0.28.0"
+types-python-jose = ">=3.3.0,<4.0.0"
+uvicorn = ">=0.30,<0.31"
 
 [package.extras]
 authenticated = ["cryptography (>=42.0.0,<43.0.0)"]
@@ -653,13 +654,13 @@ files = [
 
 [[package]]
 name = "uvicorn"
-version = "0.27.1"
+version = "0.30.6"
 description = "The lightning-fast ASGI server."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "uvicorn-0.27.1-py3-none-any.whl", hash = "sha256:5c89da2f3895767472a35556e539fd59f7edbe9b1e9c0e1c99eebeadc61838e4"},
-    {file = "uvicorn-0.27.1.tar.gz", hash = "sha256:3d9a267296243532db80c83a959a3400502165ade2c1338dea4e67915fd4745a"},
+    {file = "uvicorn-0.30.6-py3-none-any.whl", hash = "sha256:65fd46fe3fda5bdc1b03b94eb634923ff18cd35b2f084813ea79d1f103f711b5"},
+    {file = "uvicorn-0.30.6.tar.gz", hash = "sha256:4b15decdda1e72be08209e860a1e10e92439ad5b97cf44cc945fcbee66fc5788"},
 ]
 
 [package.dependencies]
@@ -672,4 +673,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "2405b35f9ba77b38082392cb302277971515435607e2bda96cffa4cdd6feaadf"
+content-hash = "516aeb994c7036fd148e8fd22c7da697991bd2f4577112ec897d59963259e5a5"
