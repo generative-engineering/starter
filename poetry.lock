@@ -107,17 +107,17 @@ standard = ["email-validator (>=2.0.0)", "fastapi-cli[standard] (>=0.0.5)", "htt
 
 [[package]]
 name = "generative-fabric-definitions"
-version = "35.0.2"
+version = "37.1.2"
 description = "A library to help create Generative Fabric components."
 optional = false
 python-versions = ">=3.10,<4.0.0"
 files = [
-    {file = "generative_fabric_definitions-35.0.2-py3-none-any.whl", hash = "sha256:3e3c75126019496a5d4d8aa3c09425b2501bdb23266763806d43a23f4cfb9f18"},
-    {file = "generative_fabric_definitions-35.0.2.tar.gz", hash = "sha256:fb0a8f9fd432204509df9c614104497392852de41509e4c5f516c5b124bf94ef"},
+    {file = "generative_fabric_definitions-37.1.2-py3-none-any.whl", hash = "sha256:cad64032c4ff4fde11debf26e40e54e2d4f65f3991a06b8682a68fa9b87459f5"},
+    {file = "generative_fabric_definitions-37.1.2.tar.gz", hash = "sha256:cf54f58511f466a5d104bd162a81db0cfe632fe1a5f8c2695ad5b86aa68e2730"},
 ]
 
 [package.dependencies]
-fastapi = ">=0.113.0,<0.114.0"
+fastapi = ">=0.113.0"
 httpx = {version = ">=0.27.0,<0.28.0", extras = ["http2"]}
 pydantic = ">=2.0,<3.0"
 pydantic-settings = ">=2.0,<3.0"
@@ -125,7 +125,7 @@ pylibmagic = {version = ">=0.5.0,<0.6.0", optional = true, markers = "sys_platfo
 python-jose = ">=3.3.0,<4.0.0"
 python-magic = {version = ">=0.4.27,<0.5.0", optional = true, markers = "sys_platform != \"win32\" and extra == \"local\""}
 types-python-jose = ">=3.3.0,<4.0.0"
-uvicorn = ">=0.30,<0.31"
+uvicorn = ">=0.32.0,<0.33.0"
 
 [package.extras]
 authenticated = ["cryptography (>=42.0.0,<43.0.0)"]
@@ -654,13 +654,13 @@ files = [
 
 [[package]]
 name = "uvicorn"
-version = "0.30.6"
+version = "0.32.0"
 description = "The lightning-fast ASGI server."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "uvicorn-0.30.6-py3-none-any.whl", hash = "sha256:65fd46fe3fda5bdc1b03b94eb634923ff18cd35b2f084813ea79d1f103f711b5"},
-    {file = "uvicorn-0.30.6.tar.gz", hash = "sha256:4b15decdda1e72be08209e860a1e10e92439ad5b97cf44cc945fcbee66fc5788"},
+    {file = "uvicorn-0.32.0-py3-none-any.whl", hash = "sha256:60b8f3a5ac027dcd31448f411ced12b5ef452c646f76f02f8cc3f25d8d26fd82"},
+    {file = "uvicorn-0.32.0.tar.gz", hash = "sha256:f78b36b143c16f54ccdb8190d0a26b5f1901fe5a3c777e1ab29f26391af8551e"},
 ]
 
 [package.dependencies]
@@ -673,4 +673,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "bbb0dc3c5908ec31af956f0f8cd3d1f6e9350554a552387422cf57bf264c2eea"
+content-hash = "49d2152e81b3c8ed83dac5bce810ff30df2c366c9d3620e484bc877a763b275f"
