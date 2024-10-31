@@ -107,13 +107,13 @@ standard = ["email-validator (>=2.0.0)", "fastapi-cli[standard] (>=0.0.5)", "htt
 
 [[package]]
 name = "generative-fabric-definitions"
-version = "37.1.2"
+version = "37.1.3"
 description = "A library to help create Generative Fabric components."
 optional = false
 python-versions = ">=3.10,<4.0.0"
 files = [
-    {file = "generative_fabric_definitions-37.1.2-py3-none-any.whl", hash = "sha256:cad64032c4ff4fde11debf26e40e54e2d4f65f3991a06b8682a68fa9b87459f5"},
-    {file = "generative_fabric_definitions-37.1.2.tar.gz", hash = "sha256:cf54f58511f466a5d104bd162a81db0cfe632fe1a5f8c2695ad5b86aa68e2730"},
+    {file = "generative_fabric_definitions-37.1.3-py3-none-any.whl", hash = "sha256:c4ab6dff13840240b7dac65e7266d67db726259264a695f9d5bad14d93128da5"},
+    {file = "generative_fabric_definitions-37.1.3.tar.gz", hash = "sha256:76397cb378e9340b45e1f67dc7271bb1ff40adfec13caa15a1f8a304b1073644"},
 ]
 
 [package.dependencies]
@@ -679,4 +679,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "0466a76d5047e5319ca923a92f407f3d85a7e482b7be134b10893b03c8d935e9"
+content-hash = "68ce8acd8900b912a701b6e919295fa7bd284d8e2feaebf761c04707921501a5"
