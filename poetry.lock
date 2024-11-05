@@ -107,13 +107,13 @@ standard = ["email-validator (>=2.0.0)", "fastapi-cli[standard] (>=0.0.5)", "htt
 
 [[package]]
 name = "generative-fabric-definitions"
-version = "37.1.3"
+version = "37.1.8"
 description = "A library to help create Generative Fabric components."
 optional = false
 python-versions = ">=3.10,<4.0.0"
 files = [
-    {file = "generative_fabric_definitions-37.1.3-py3-none-any.whl", hash = "sha256:c4ab6dff13840240b7dac65e7266d67db726259264a695f9d5bad14d93128da5"},
-    {file = "generative_fabric_definitions-37.1.3.tar.gz", hash = "sha256:76397cb378e9340b45e1f67dc7271bb1ff40adfec13caa15a1f8a304b1073644"},
+    {file = "generative_fabric_definitions-37.1.8-py3-none-any.whl", hash = "sha256:da329bf3321ac8a8c61534cd14fa0c70da3ffc63d3e88c3afa1304ea74342778"},
+    {file = "generative_fabric_definitions-37.1.8.tar.gz", hash = "sha256:7b616a64a4aa17a9b7c4d5e13064ca87352bff806c9328a44f31a6bae25e75cc"},
 ]
 
 [package.dependencies]
@@ -128,9 +128,9 @@ types-python-jose = ">=3.3.0,<4.0.0"
 uvicorn = ">=0.32.0,<0.33.0"
 
 [package.extras]
-authenticated = ["cryptography (>=42.0.0,<43.0.0)"]
+authenticated = ["cryptography (>=43.0.0,<44.0.0)"]
 local = ["pylibmagic (>=0.5.0,<0.6.0)", "python-magic (>=0.4.27,<0.5.0)"]
-pretty-logging = ["coloredlogs (>=15.0.1,<16.0.0)"]
+pretty-logging = ["generative-logging (>=1.0.0,<2.0.0)"]
 
 [package.source]
 type = "legacy"
@@ -679,4 +679,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "68ce8acd8900b912a701b6e919295fa7bd284d8e2feaebf761c04707921501a5"
+content-hash = "06d8d70246cc9ee629ee0c65afecf498873ca3128e11fc2f1730db846e1707f9"
