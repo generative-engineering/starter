@@ -1,22 +1,21 @@
 default:
-  image: python:3.11
+  image: python:3.13
 
 stages:
   - lint
   - test
 
-# See https://docs.gitlab.com/ee/ci/yaml/workflow.html#switch-between-branch-pipelines-and-merge-request-pipelines
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
       when: never
-    - if: $CI_COMMIT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 variables:
   POETRY_VERSION: 1.8.3
   POETRY_VIRTUALENVS_IN_PROJECT: "true"
-  NIX_IMAGE: "registry.gitlab.com/generative/infra/base-images/nixos:2024.06.10.16.03"  # 24.05
+  NIX_IMAGE: "registry.gitlab.com/generative/infra/nixos-ci:2024.10.30.17.38"  # 24.05
   CACHIX_AUTH_TOKEN: $CACHIX_AUTH_TOKEN_RW
 
 
@@ -25,15 +24,20 @@ lint-in-nix:
   needs: [ ]
   image: $NIX_IMAGE
   script:
-    # Basic hygiene
     - nix flake check --keep-going
     - poetry install
     - poetry check
     - poetry run mypy
 
-
-test-python:
-  stage: test
+test-pythons:
+  parallel:
+    matrix:
+      - PYTHON_IMAGE_VERSION:
+        - "3.10"
+        - "3.11"
+        - "3.12"
+        - "3.13"
+  image: "python:$PYTHON_IMAGE_VERSION"
   needs: [ ]
   before_script:
     - curl -sSL https://install.python-poetry.org | python3 - --version $POETRY_VERSION
@@ -41,6 +45,7 @@ test-python:
     - poetry config -- http-basic.generative-gitlab gitlab-ci-token "$CI_JOB_TOKEN"
     - poetry install --sync
   script:
+    - poetry check
     - poetry run pytest
 
 
@@ -48,8 +53,6 @@ test-in-nix-shell:
   stage: test
   needs: [ ]
   image: $NIX_IMAGE
-  tags:
-    - saas-linux-medium-amd64
   script:
     # Basic hygiene
     - nix flake check
