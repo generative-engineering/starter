@@ -39,8 +39,14 @@ Use
 ### Running function service
 To run a local function service exposing the Fabric Functions defined in `src/cube`, run:
 
+With Poetry:
 ```shell
 poetry run server src/cube
+```
+
+or with Nix:
+```shell
+cube src/cube
 ```
 
 After navigating to the doc site of the port the server is bound to,
@@ -50,10 +56,21 @@ you will see the API of the Fabric Functions defined.
 When this server is running, the UI will be able to use the Fabric Functions you've defined.
 The server must be restarted to update the API endpoints with any changes made in the code.
 
+### Testing
+With Poetry:
+```shell
+poetry run pytest
+```
+
+With Nix:
+```shell
+pytest
+```
+
 ### Linting
+With Nix:
 ```shell
 nix flake check --keep-going
-poetry run mypy
 ```
 
 ### Using an unreleased version of fabric-definitions
