@@ -1,12 +1,12 @@
 {
-    $schema: "https://docs.renovatebot.com/renovate-schema.json",
-    extends: [
-        // See https://docs.renovatebot.com/config-presets/#gitlab
-        "gitlab>generative/infra/renovate//presets/poetry.json5#main"
-    ],
-    // We want to simulate new users of the repo more,
-    // so keep the lockfile fresh
-    lockFileMaintenance: {
-        enabled: true
-    }
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
+    // See https://docs.renovatebot.com/config-presets/#gitlab
+    "gitlab>generative/infra/renovate//presets/poetry.json5#main",
+  ],
+  // We want to simulate new users of the repo more,
+  // so keep the lockfile fresh
+  lockFileMaintenance: {
+    enabled: true,
+  },
 }
