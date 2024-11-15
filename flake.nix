@@ -36,7 +36,7 @@
           };
           app.doCheck = false;
           env.editablePackageSources = {
-            cube = ./src;
+            fabricfunctions = ./fabricfunctions;
             tests = ./tests;
           };
         };

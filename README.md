@@ -2,80 +2,41 @@ Fabric Function Starter
 ========================
 
 
-Developing your own Fabric Functions
-------------------------------------
-
-- Create a new repository through Terraform.
-  Follow instructions in our [Gitlab Infrastructure Repo](https://gitlab.com/generative/infra/gitlab-bootstrap).
-- Copy the contents of this repository to it.
-  If you already have some functions to use, then copy them too.
-  - Delete the `cube` example package (keeping the `utils.py` file if you want)
-    once you're happy with how it works.
-     Update  `pyproject.toml` and `gitlab-ci.yml` files and remove any sections you don't need.
-  - Delete any files you don't need.
-- Create your new Fabric Functions following the usage guide in the
-  [Fabric Guide](https://gitlab.com/generative/fabric/fabric-definitions/-/blob/main/docs/fabric_guide.md).
-  - Use `pytest` for unit tests and also for end-to-end tests for benchmarking or storing examples.
-    As shown in the [end-to-end example](tests/cube/test_end_to_end.py),
-    use fixtures to provide fabric function inputs,
-  - and call Fabric Functions in the order they'll be called during graph execution.
-- Update the [README](README.md) to explain the functionality,
-  keeping the relevant parts from below.
-
-
-Setup
------
-
-- Follow our [Poetry Setup Guide](https://generative.gitlab.io/team/documentation/technical/languages/python/python-setup.html#poetry).
-- Run `poetry install` in the terminal to install all the relevant packages.
-- We use a basic Nix flake for this project:
-  `nix develop` gives you a shell with the right version of Python and Poetry,
-  See the [Generative Nix guide](https://generative.gitlab.io/team/documentation/technical/software-development/nix.html).
-  
-
-Use
----
-
-### Running function service
-To run a local function service exposing the Fabric Functions defined in `src/cube`, run:
-
-With Poetry:
-```shell
-poetry run server src/cube
-```
-
-or with Nix:
-```shell
-cube src/cube
-```
-
-After navigating to the doc site of the port the server is bound to,
-e.g. [http://localhost:3000/](http://localhost:3000),
-you will see the API of the Fabric Functions defined.
-
-When this server is running, the UI will be able to use the Fabric Functions you've defined.
-The server must be restarted to update the API endpoints with any changes made in the code.
+Setup and Use
+-------------
+- Follow the Setup guide in [our docs](https://docs.generative.vision/) to install everything you need
+- Create a copy of the contents of this repository to a location where you want to develop your fabric functions
+- Run
+- Create and use your new Fabric Functions following the Concepts guide in [our docs](https://docs.generative.vision/)
 
 ### Testing
-With Poetry:
+Testing your fabric function can be a useful way of debugging.
+Python comes with the [pytest framework](https://docs.pytest.org/en/stable/) for testing.
+There's a simple existing test in the ['tests' directory](/tests).
+Add your own tests as you like.
+
+To run all tests in this directory, run:
 ```shell
 poetry run pytest
 ```
 
-With Nix:
-```shell
-pytest
-```
-
 ### Linting
-With Nix:
+If you're typing your functions,
+[mypy](https://mypy.readthedocs.io/en/stable/) is useful for checking for any errors before running.
+To run mypy:
 ```shell
-nix flake check --keep-going
+poetry run mypy
 ```
 
-### Using an unreleased version of fabric-definitions
+[Ruff](https://docs.astral.sh/ruff/) is useful for making sure your code is consistently and neatly formatted.
+
+To lint your code and fix any violations
+(remove unused imports, fix docstring issues, standardise typing etc.), run:
 ```shell
-# Update for your local directory setup
-poetry remove generative-fabric-definitions
-poetry add --editable ../../fabric/fabric-definitions
+poetry run ruff check --fix
+```
+
+To automatically format your code with ruff (adjust whitespace, indentation and line breaks etc.), run
+```shell
+poetry run ruff format
 ```
