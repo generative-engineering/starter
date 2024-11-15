@@ -6,7 +6,7 @@ Setup and Use
 -------------
 - Follow the Setup guide in [our docs](https://docs.generative.vision/) to install everything you need
 - Create a copy of the contents of this repository to a location where you want to develop your fabric functions
-- Install the relevant python packages which can be done by running `poetry install` 
+- Install the relevant python packages which can be done by running `poetry install`
 - Create and use your new Fabric Functions following the Concepts guide in [our docs](https://docs.generative.vision/)
 
 ### Testing
