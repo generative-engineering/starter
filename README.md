@@ -6,7 +6,7 @@ Setup and Use
 -------------
 - Follow the Setup guide in [our docs](https://docs.generative.vision/) to install everything you need
 - Create a copy of the contents of this repository to a location where you want to develop your fabric functions
-- Run
+- Install the relevant python packages which can be done by running `poetry install` 
 - Create and use your new Fabric Functions following the Concepts guide in [our docs](https://docs.generative.vision/)
 
 ### Testing
@@ -26,17 +26,4 @@ If you're typing your functions,
 To run mypy:
 ```shell
 poetry run mypy
-```
-
-[Ruff](https://docs.astral.sh/ruff/) is useful for making sure your code is consistently and neatly formatted.
-
-To lint your code and fix any violations
-(remove unused imports, fix docstring issues, standardise typing etc.), run:
-```shell
-poetry run ruff check --fix
-```
-
-To automatically format your code with ruff (adjust whitespace, indentation and line breaks etc.), run
-```shell
-poetry run ruff format
 ```

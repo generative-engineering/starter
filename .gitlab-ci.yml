@@ -60,5 +60,5 @@ test-in-nix-shell:
     - poetry install
     # Run all the tests
     - poetry run pytest
-    - timeout 7 poetry run server fabricfunctions &
+    - timeout 7 poetry run server functions &
     - curl -sS --retry-connrefused --retry 5 --retry-delay 1 --fail http://localhost:3000/docs

@@ -1,4 +1,4 @@
-from fabricfunctions.add import add
+from functions.add import add
 
 
 def test_add():
