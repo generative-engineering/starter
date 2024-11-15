@@ -3,7 +3,7 @@ name = "generative-starter-project"
 version = "4.0.0"
 description = "Starter Project for Generative Fabric Functions"
 authors = ["Generative Engineering <degenerates@generative.vision>"]
-packages = [{ include = "fabricfuncitions" }]
+packages = [{ include = "fabricfunctions" }]
 
 [[tool.poetry.source]]
 name = "generative-gitlab"
